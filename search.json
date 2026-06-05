@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "attendees.html",
+    "href": "attendees.html",
+    "title": "Attendees",
+    "section": "",
+    "text": "Brian Helsel\n\n\nJulianne Clina"
+  },
+  {
+    "objectID": "attendees/BrianHelsel/about.html",
+    "href": "attendees/BrianHelsel/about.html",
+    "title": "Brian Helsel",
+    "section": "",
+    "text": "Professioal Background\nDr. Brian Helsel is an Assistant Professor with the University of Kansas Alzheimer’s Disease Research Center in the Department of Neurology at the University of Kansas Medical Center. He has a background in exercise physiology and physical activity epidemiology and is interested in understanding the role of exercise for promoting brain health in adults with Down syndrome.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nBrian Helsel, PhD\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/JulianneClina/about.html",
+    "href": "attendees/JulianneClina/about.html",
+    "title": "Julianne Clina",
+    "section": "",
+    "text": "Julianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/template.html",
+    "href": "attendees/JulianneClina/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/template.html#introduction-to-dplyr",
+    "href": "attendees/JulianneClina/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(name, bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/JulianneClina/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+  },
+  {
+    "objectID": "attendees/BrianHelsel/code/template.html",
+    "href": "attendees/BrianHelsel/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+  },
+  {
+    "objectID": "attendees/BrianHelsel/code/template.html#introduction-to-dplyr",
+    "href": "attendees/BrianHelsel/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/BrianHelsel/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/BrianHelsel/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2"
+  }
+]

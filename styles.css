@@ -1,0 +1,15 @@
+/* css styles */
+
+.profile img {
+    float: left;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: block;
+    border-radius: 50%;
+    border: 3px solid #333;
+    object-fit: cover;
+    object-position: center top;
+    margin-right: 25px;
+}
+
