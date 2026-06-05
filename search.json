@@ -719,5 +719,12 @@
     "title": "Practical Exercises",
     "section": "Tips",
     "text": "Tips\n\nKeep one .qmd file per week so your submissions stay organized. Your portfolio will be arranged according to the date in the YAML.\nIf the main repository has been updated since you forked it, sync your fork on GitHub (Sync fork &gt; Update branch) before pushing new work to avoid merge conflicts. This should not happen if content is only being changed in participant folders."
+  },
+  {
+    "objectID": "index.html#quarto-website",
+    "href": "index.html#quarto-website",
+    "title": "Practical Exercises",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nhttps://bhelsel.github.io/2026-RLAB-Practical-Exercises/"
   }
 ]
