@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>project – 2026 RLAB Practical Exercises</title>
+<title>Practical Exercises – 2026 RLAB Practical Exercises</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -111,15 +111,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#submitting-your-work" id="toc-submitting-your-work" class="nav-link" data-scroll-target="#submitting-your-work">Submitting Your Work</a></li>
+  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">Tips</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">project</h1>
+<h1 class="title">Practical Exercises</h1>
 </div>
 
 
@@ -136,8 +144,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This page hosts the practical exercise submissions for R-LAB attendees. Each week, you will complete a hands-on coding activity and submit your work by contributing directly to the R-LAB GitHub repository. This process mirrors real-world collaborative software development and is itself a practical skill worth learning.</p>
+<section id="getting-started" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started">Getting Started</h3>
+<p>You will only need to complete steps 1–3 once.</p>
+<ol type="1">
+<li><p><strong>Fork the repository</strong>. Navigate to the <a href="https://github.com/bhelsel/2026-RLAB-Practical-Exercises">2026-RLAB-Practical-Exercises</a> GitHub repository and click Fork in the top-right corner. This creates your own personal copy of the repository under your GitHub account.</p></li>
+<li><p><strong>Clone your fork</strong>. Copy your forked repository to your local machine:</p></li>
+</ol>
+<pre class="{bash}"><code>    git clone https://github.com/YOUR-USERNAME/2026-RLAB-Practical-Exercises.git</code></pre>
+<ol start="3" type="1">
+<li><strong>Add to your folder</strong>. All weekly submissions should be saved in the <code>code/</code> directory within the folder named for you. A template file is provided to help you get started on each exercise. Feel free to modify the template and add any additional code, notes, or documentation you find helpful.</li>
+</ol>
+</section>
+<section id="submitting-your-work" class="level3">
+<h3 class="anchored" data-anchor-id="submitting-your-work">Submitting Your Work</h3>
+<p>Repeat these steps each week after completing the practical exercise.</p>
+<ol type="1">
+<li><strong>Add your file</strong>. Save your completed exercise as a .qmd file within the folder named for you. Make sure the file has a title, subtitle, author, and date in the YAML header:</li>
+</ol>
+<pre class="{yaml}"><code>    ---
+    title: "Week 1: Basics in R"
+    subtitle: "Practice Reading and Manipulating Data"
+    date: 2026-06-24
+    ---</code></pre>
+<p>You can also add an optional image to be displayed on your list of submissions. Each exercise should have <code>echo</code> set to true to display the code and <code>eval</code> set to true to evaluate the code blocks.</p>
+<ol start="2" type="1">
+<li><strong>Commit and push</strong>. From your local repository, stage, commit, and push your changes using <code>git</code> commands (see below), your integrated development environment (e.g., R Studio, Positron, VS Code), or GitHub Desktop.</li>
+</ol>
+<pre class="{bash}"><code>    git add
+    git commit -m "Add week 1 exercise"
+    git push origin main</code></pre>
+<ol start="3" type="1">
+<li><strong>Open a pull request</strong>. Go to your forked repository on GitHub and click Contribute &gt; Open pull request. Add a brief title (e.g., “Week 1 submission - Firstname Lastname”) and click Create Pull Request. Your work will be reviewed and merged into the main repository.</li>
+</ol>
+</section>
+<section id="tips" class="level2">
+<h2 class="anchored" data-anchor-id="tips">Tips</h2>
+<ul>
+<li>Keep one .qmd file per week so your submissions stay organized. Your portfolio will be arranged according to the date in the YAML.</li>
+<li>If the main repository has been updated since you forked it, sync your fork on GitHub (Sync fork &gt; Update branch) before pushing new work to avoid merge conflicts. This should not happen if content is only being changed in participant folders.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -213,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/bhelsel\.github\.io\/2026-RLAB-Practical-Exercises\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
