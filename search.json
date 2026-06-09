@@ -364,6 +364,27 @@
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
+    "objectID": "attendees/ElyseVetter/code/template.html",
+    "href": "attendees/ElyseVetter/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+  },
+  {
+    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
+    "href": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(name, bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+  },
+  {
     "objectID": "attendees/KameronSuire/code/template.html",
     "href": "attendees/KameronSuire/code/template.html",
     "title": "Practical Exercise Template",
@@ -586,6 +607,13 @@
     "title": "Kameron Suire",
     "section": "",
     "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nKameron Suire\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/ElyseVetter/about.html",
+    "href": "attendees/ElyseVetter/about.html",
+    "title": "Elyse Vetter",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElyse Vetter\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "attendees/AbassBabatunde/about.html",
