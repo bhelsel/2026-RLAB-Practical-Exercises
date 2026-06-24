@@ -1,5 +1,36 @@
 [
   {
+    "listing": "/attendees/MorganBrucks/about.html",
+    "items": [
+      "/attendees/MorganBrucks/code/whole-game.html",
+      "/attendees/MorganBrucks/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/RashelleHoffman/about.html",
+    "items": [
+      "/attendees/RashelleHoffman/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/BrianHelsel/about.html",
+    "items": [
+      "/attendees/BrianHelsel/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/MelissaJenkins/about.html",
+    "items": [
+      "/attendees/MelissaJenkins/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/StefaniBacaAtlas/about.html",
+    "items": [
+      "/attendees/StefaniBacaAtlas/code/template.html"
+    ]
+  },
+  {
     "listing": "/attendees/SullafaKadura/about.html",
     "items": [
       "/attendees/SullafaKadura/code/template.html"
@@ -62,37 +93,8 @@
   {
     "listing": "/attendees/MasonMcClarnon/about.html",
     "items": [
+      "/attendees/MasonMcClarnon/code/whole-game.html",
       "/attendees/MasonMcClarnon/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/StefaniBacaAtlas/about.html",
-    "items": [
-      "/attendees/StefaniBacaAtlas/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/MelissaJenkins/about.html",
-    "items": [
-      "/attendees/MelissaJenkins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/BrianHelsel/about.html",
-    "items": [
-      "/attendees/BrianHelsel/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/RashelleHoffman/about.html",
-    "items": [
-      "/attendees/RashelleHoffman/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/MorganBrucks/about.html",
-    "items": [
-      "/attendees/MorganBrucks/code/template.html"
     ]
   },
   {
