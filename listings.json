@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/attendees/KameronSuire/about.html",
+    "items": [
+      "/attendees/KameronSuire/code/whole-game.html",
+      "/attendees/KameronSuire/code/template.html"
+    ]
+  },
+  {
     "listing": "/attendees/DavidTitus/about.html",
     "items": [
       "/attendees/DavidTitus/code/template.html"
@@ -126,12 +133,6 @@
     "items": [
       "/attendees/MorganBrucks/code/whole-game.html",
       "/attendees/MorganBrucks/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KameronSuire/about.html",
-    "items": [
-      "/attendees/KameronSuire/code/template.html"
     ]
   },
   {
