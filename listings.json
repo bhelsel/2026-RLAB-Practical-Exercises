@@ -44,69 +44,10 @@
     ]
   },
   {
-    "listing": "/attendees/MelissaJenkins/about.html",
+    "listing": "/attendees/MasonMcClarnon/about.html",
     "items": [
-      "/attendees/MelissaJenkins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/StefaniBacaAtlas/about.html",
-    "items": [
-      "/attendees/StefaniBacaAtlas/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SullafaKadura/about.html",
-    "items": [
-      "/attendees/SullafaKadura/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
-    "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JohnHeap/about.html",
-    "items": [
-      "/attendees/JohnHeap/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/YasamanRazavi/about.html",
-    "items": [
-      "/attendees/YasamanRazavi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JackieAdedokun/about.html",
-    "items": [
-      "/attendees/JackieAdedokun/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/BethanyForseth/about.html",
-    "items": [
-      "/attendees/BethanyForseth/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SaraFortinMiller/about.html",
-    "items": [
-      "/attendees/SaraFortinMiller/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SadafSalehi/about.html",
-    "items": [
-      "/attendees/SadafSalehi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AshlynBarry/about.html",
-    "items": [
-      "/attendees/AshlynBarry/code/template.html"
+      "/attendees/MasonMcClarnon/code/whole-game.html",
+      "/attendees/MasonMcClarnon/code/template.html"
     ]
   },
   {
@@ -116,10 +57,70 @@
     ]
   },
   {
-    "listing": "/attendees/MasonMcClarnon/about.html",
+    "listing": "/attendees/AshlynBarry/about.html",
     "items": [
-      "/attendees/MasonMcClarnon/code/whole-game.html",
-      "/attendees/MasonMcClarnon/code/template.html"
+      "/attendees/AshlynBarry/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SadafSalehi/about.html",
+    "items": [
+      "/attendees/SadafSalehi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SaraFortinMiller/about.html",
+    "items": [
+      "/attendees/SaraFortinMiller/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/BethanyForseth/about.html",
+    "items": [
+      "/attendees/BethanyForseth/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JackieAdedokun/about.html",
+    "items": [
+      "/attendees/JackieAdedokun/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/YasamanRazavi/about.html",
+    "items": [
+      "/attendees/YasamanRazavi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JohnHeap/about.html",
+    "items": [
+      "/attendees/JohnHeap/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "items": [
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SullafaKadura/about.html",
+    "items": [
+      "/attendees/SullafaKadura/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/StefaniBacaAtlas/about.html",
+    "items": [
+      "/attendees/StefaniBacaAtlas/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/MelissaJenkins/about.html",
+    "items": [
+      "/attendees/MelissaJenkins/code/6-25quarto.html",
+      "/attendees/MelissaJenkins/code/template.html"
     ]
   },
   {
