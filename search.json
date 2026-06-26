@@ -340,7 +340,7 @@
     "href": "attendees/AbassBabatunde/about.html",
     "title": "Abass Babatunde",
     "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nAbass Babatunde\n\n\n\n\n\nNo matching items"
+    "text": "Practical Exercise Template\n\n\nFist Github Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nAbass Babatunde, PhD\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "attendees/AshlynBarry/about.html",
@@ -599,7 +599,7 @@
     "href": "attendees/AbassBabatunde/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
-    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment.\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
   },
   {
     "objectID": "attendees/AbassBabatunde/code/template.html#introduction-to-dplyr",
