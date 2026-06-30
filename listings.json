@@ -25,6 +25,12 @@
     ]
   },
   {
+    "listing": "/attendees/KeithSmith/about.html",
+    "items": [
+      "/attendees/KeithSmith/code/template.html"
+    ]
+  },
+  {
     "listing": "/attendees/RachelHantman/about.html",
     "items": [
       "/attendees/RachelHantman/code/template.html"
@@ -119,7 +125,7 @@
   {
     "listing": "/attendees/MelissaJenkins/about.html",
     "items": [
-      "/attendees/MelissaJenkins/code/6-25quarto.html",
+      "/attendees/MelissaJenkins/code/whole-game.html",
       "/attendees/MelissaJenkins/code/template.html"
     ]
   },
