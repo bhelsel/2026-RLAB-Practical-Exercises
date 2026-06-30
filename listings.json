@@ -38,16 +38,24 @@
     ]
   },
   {
-    "listing": "/attendees/MelissaJenkins/about.html",
+    "listing": "/attendees/BrianHelsel/about.html",
     "items": [
-      "/attendees/MelissaJenkins/code/whole-game.html",
-      "/attendees/MelissaJenkins/code/template.html"
+      "/attendees/BrianHelsel/code/whole-game.html",
+      "/attendees/BrianHelsel/code/template.html",
+      "/attendees/BrianHelsel/code/transform.html"
     ]
   },
   {
-    "listing": "/attendees/StefaniBacaAtlas/about.html",
+    "listing": "/attendees/MasonMcClarnon/about.html",
     "items": [
-      "/attendees/StefaniBacaAtlas/code/template.html"
+      "/attendees/MasonMcClarnon/code/whole-game.html",
+      "/attendees/MasonMcClarnon/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/AbassBabatunde/about.html",
+    "items": [
+      "/attendees/AbassBabatunde/code/template.html"
     ]
   },
   {
@@ -101,27 +109,21 @@
   {
     "listing": "/attendees/AshlynBarry/about.html",
     "items": [
+      "/attendees/AshlynBarry/code/visualization_activities.html",
       "/attendees/AshlynBarry/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/AbassBabatunde/about.html",
+    "listing": "/attendees/StefaniBacaAtlas/about.html",
     "items": [
-      "/attendees/AbassBabatunde/code/template.html"
+      "/attendees/StefaniBacaAtlas/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/MasonMcClarnon/about.html",
+    "listing": "/attendees/MelissaJenkins/about.html",
     "items": [
-      "/attendees/MasonMcClarnon/code/whole-game.html",
-      "/attendees/MasonMcClarnon/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/BrianHelsel/about.html",
-    "items": [
-      "/attendees/BrianHelsel/code/whole-game.html",
-      "/attendees/BrianHelsel/code/template.html"
+      "/attendees/MelissaJenkins/code/whole-game.html",
+      "/attendees/MelissaJenkins/code/template.html"
     ]
   },
   {

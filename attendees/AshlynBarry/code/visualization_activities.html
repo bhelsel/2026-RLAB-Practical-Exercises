@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jessica Keller">
-<meta name="dcterms.date" content="2026-06-24">
 
-<title>The Whole Game Pracice – 2026 RLAB Practical Exercises</title>
+<title>ggplot2 Hands-On Practice – 2026 RLAB Practical Exercises</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -148,35 +146,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#activity-1-fill-in-the-blanks" id="toc-activity-1-fill-in-the-blanks" class="nav-link active" data-scroll-target="#activity-1-fill-in-the-blanks">Activity 1: Fill in the blanks</a></li>
+  <li><a href="#activity-2-update-the-facet-plots" id="toc-activity-2-update-the-facet-plots" class="nav-link" data-scroll-target="#activity-2-update-the-facet-plots">Activity 2: Update the facet plots</a></li>
+  <li><a href="#activity-3-create-figure-using-new-dataset" id="toc-activity-3-create-figure-using-new-dataset" class="nav-link" data-scroll-target="#activity-3-create-figure-using-new-dataset">Activity 3: Create figure using new dataset</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Whole Game Pracice</h1>
-<p class="subtitle lead">My First GitHub Push</p>
+<h1 class="title">ggplot2 Hands-On Practice</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jessica Keller </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 24, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -186,18 +179,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Assignment</strong>. Practice for Dr.&nbsp;Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request</p>
+<p>Time to apply what we learned! Work through the activity that matches your experience level. If you finish early, try the bonus question or move on to the next level!</p>
+<hr>
+<section id="activity-1-fill-in-the-blanks" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-fill-in-the-blanks">Activity 1: Fill in the blanks</h2>
+<p><strong>Goal:</strong> Build a scatterplot of penguin bill length vs.&nbsp;bill depth, colored by species, using what you learned today.</p>
+<p><strong>Instructions:</strong> Fill in the <code>___</code> blanks to complete the code. Run it and check that your plot displays correctly!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hello R-LAB</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"My first GitHub push worked!"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.5</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">___ =</span> penguins,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> ___, <span class="at">color =</span> ___)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>() <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Bill length and bill depth by species"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"___"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"___"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">___ =</span> <span class="fl">0.5</span>), </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">___ =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The dataset you’ve been using all day goes in the first blank</li>
+<li>Find the variable name for bill depth</li>
+<li>Use the same geom as the scatterplots in the presentation</li>
+<li>Axis labels should be human-readable (e.g., “Bill depth (mm)”)</li>
+<li>Revist <strong>Manually modifying theme</strong> slides to center titles</li>
+</ul>
+<p><strong>Bonus:</strong> Can you also add <code>shape = species</code> inside <code>aes()</code> to make the plot accessible to colorblind viewers?</p>
+<hr>
+</section>
+<section id="activity-2-update-the-facet-plots" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2-update-the-facet-plots">Activity 2: Update the facet plots</h2>
+<p><strong>Goal:</strong> Recreate and then enhance the faceted penguin plot from the presentation.</p>
+<p><strong>Instructions:</strong> Start with the faceted plot from the slides, then make the following modifications:</p>
+<ol type="1">
+<li><strong>Apply a theme</strong> — add a theme with the following specifications:</li>
+</ol>
+<ul>
+<li>Position the title and subtitle to be right aligned</li>
+<li>Set the legend position to “bottom”</li>
+<li>Remove major and minor gridlines</li>
+<li>Add axes lines that are colored blue</li>
+<li>Set your theme as a function before applying it to your figure.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Add color</strong> — map <code>color = species</code> inside so each species panel has a distinct color</li>
+<li><strong>Fix the legend position</strong> — the default <code>legend.position = c(0.85, 0.2)</code> may overlap the facets; adjust it to <code>"bottom"</code> instead <strong>Bonus:</strong> Try <code>facet_grid(sex ~ species)</code> instead of <code>facet_wrap(~ species)</code>. What changes? What does this tell you that the original plot didn’t?</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet plots from presentation - modify according to instructions above</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> penguins,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> species) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Penguin body mass by flipper length"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">"Faceted by species"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Body Mass (g)"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<hr>
+</section>
+<section id="activity-3-create-figure-using-new-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-create-figure-using-new-dataset">Activity 3: Create figure using new dataset</h2>
+<p><strong>Goal:</strong> Use the <code>mtcars</code> dataset to independently apply everything from the presentation to answer a research question.</p>
+<p><strong>Background:</strong> <code>mtcars</code> is a built-in R dataset containing performance and design specs for 32 car models. Run <code>?mtcars</code> to see the full variable list. Key variables:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mpg</code></td>
+<td>Miles per gallon</td>
+</tr>
+<tr class="even">
+<td><code>hp</code></td>
+<td>Horsepower</td>
+</tr>
+<tr class="odd">
+<td><code>wt</code></td>
+<td>Weight (1000 lbs)</td>
+</tr>
+<tr class="even">
+<td><code>cyl</code></td>
+<td>Number of cylinders (4, 6, or 8)</td>
+</tr>
+<tr class="odd">
+<td><code>am</code></td>
+<td>Transmission (0 = automatic, 1 = manual)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Research question:</strong> <em>Does the relationship between horsepower and fuel efficiency differ by number of cylinders?</em></p>
+<p><strong>Your task — build a complete, publication-ready figure that:</strong></p>
+<ol type="1">
+<li>Plots horsepower (x) vs.&nbsp;mpg (y) as a scatterplot</li>
+<li>Assigns colors and shapes points by number of cylinders — the variable is numeric, so you’ll need <code>factor(cyl)</code> inside <code>aes()</code> to treat it as a category</li>
+<li>Adds a line of best fit <strong>per cylinder group</strong> `</li>
+<li>Facets by transmission type — use <code>labeller = labeller(am = c("0" = "Automatic", "1" = "Manual"))</code> inside <code>facet_wrap()</code> to replace 0/1 with readable labels</li>
+<li>Applies a clean custom theme</li>
+<li>Has polished axis labels, a title, and a subtitle</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Bonus:</strong> Add <code>se = TRUE</code> back to <code>geom_smooth()</code> (it’s the default). What does the shaded ribbon represent, and when might it be useful in a scientific figure?</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

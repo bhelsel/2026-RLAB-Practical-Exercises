@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jessica Keller">
+<meta name="author" content="Brian Helsel, PhD">
 <meta name="dcterms.date" content="2026-06-24">
 
-<title>The Whole Game Pracice – 2026 RLAB Practical Exercises</title>
+<title>Transform – 2026 RLAB Practical Exercises</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -148,16 +148,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#filtering-by-air-time" id="toc-filtering-by-air-time" class="nav-link active" data-scroll-target="#filtering-by-air-time">Filtering by Air Time</a></li>
+  <li><a href="#date-and-time-variable" id="toc-date-and-time-variable" class="nav-link" data-scroll-target="#date-and-time-variable">Date and Time Variable</a></li>
+  <li><a href="#filtering-by-flight-details" id="toc-filtering-by-flight-details" class="nav-link" data-scroll-target="#filtering-by-flight-details">Filtering by Flight Details</a></li>
+  <li><a href="#factor-variables" id="toc-factor-variables" class="nav-link" data-scroll-target="#factor-variables">Factor Variables</a></li>
+  <li><a href="#join-flights-with-weather" id="toc-join-flights-with-weather" class="nav-link" data-scroll-target="#join-flights-with-weather">Join Flights with Weather</a></li>
+  <li><a href="#run-a-summary-table" id="toc-run-a-summary-table" class="nav-link" data-scroll-target="#run-a-summary-table">Run a Summary Table</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Whole Game Pracice</h1>
-<p class="subtitle lead">My First GitHub Push</p>
+<h1 class="title">Transform</h1>
+<p class="subtitle lead">Practice using the dplyr functions with the nycflights13 data sets</p>
 </div>
 
 
@@ -167,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jessica Keller </p>
+             <p>Brian Helsel, PhD </p>
           </div>
   </div>
     
@@ -186,18 +197,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Assignment</strong>. Practice for Dr.&nbsp;Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request</p>
+<p><strong>Assignment</strong>. Practice using the dplyr functions with the nycflights13 data sets. The data sets contained in the nycflights13 package include flights, weather, planes, airports, and airlines.</p>
+<p><strong>To access each of the data sets in the nycflights13 R package</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hello R-LAB</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"My first GitHub push worked!"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' If tidyverse is not installed:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' install.packages("tidyverse")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package containing all the flight data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>To access one of the data sets</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.5</code></pre>
+<pre><code># A tibble: 336,776 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+ 1  2013     1     1      517            515         2      830            819
+ 2  2013     1     1      533            529         4      850            830
+ 3  2013     1     1      542            540         2      923            850
+ 4  2013     1     1      544            545        -1     1004           1022
+ 5  2013     1     1      554            600        -6      812            837
+ 6  2013     1     1      554            558        -4      740            728
+ 7  2013     1     1      555            600        -5      913            854
+ 8  2013     1     1      557            600        -3      709            723
+ 9  2013     1     1      557            600        -3      838            846
+10  2013     1     1      558            600        -2      753            745
+# ℹ 336,766 more rows
+# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
+#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
+#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
+</div>
+<p><strong>To view a description of the variables in a nycflights13 data set</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?nycflights13<span class="sc">::</span>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="filtering-by-air-time" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-by-air-time">Filtering by Air Time</h2>
+<p>Filter the flights data set by <code>air_time</code> and assign the results to a data set named flights. Filter the data to retrieve flights that are ≥ 2 hours and &lt; 4 hours.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="date-and-time-variable" class="level2">
+<h2 class="anchored" data-anchor-id="date-and-time-variable">Date and Time Variable</h2>
+<p>Use the <code>year</code>, <code>month</code>, and <code>day</code> variable in the data set to create a <code>date</code> variable. Use this date variable to modify the <code>dep_time</code> and <code>arr_time</code> to create time stamps.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Hint</strong>: Look at the <code>nycflights13::flights</code> documentation to review the format of the <code>dep_time</code> and <code>arr_time</code> variables. Zero padding can be added with <code>sprintf("%04d", x)</code> where <code>x</code> is the name of the variable.</p>
+</section>
+<section id="filtering-by-flight-details" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-by-flight-details">Filtering by Flight Details</h2>
+<p>Apply an additional filtering criteria that captures flights to the Orlando, Fort Lauderdale, and Miami airports from American Airlines, Delta Air Lines, and United Airlines.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="factor-variables" class="level2">
+<h2 class="anchored" data-anchor-id="factor-variables">Factor Variables</h2>
+<p>Create a factor variable for <code>carrier</code> that includes American Airlines, Delta Air Lines, and United Airlines as the labels. Create another factor variable for <code>dest</code> that includes Orlando, Fort Lauderdale, and Miami.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="join-flights-with-weather" class="level2">
+<h2 class="anchored" data-anchor-id="join-flights-with-weather">Join Flights with Weather</h2>
+<p>Join the <code>temp</code> and <code>wind_speed</code> variables from the weather data set to flights. You will need to select these variables first along with the <strong>2 variables</strong> that you need as identifers to merge with the flights data set.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="run-a-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="run-a-summary-table">Run a Summary Table</h2>
+<p>Execute the code below to view a table summarizing the destination, temperature, wind speed, time in the air, and distance by Airline carrier. The <code>gtsummary</code> package is excellent for building tables in R for presentations or manuscripts. Converting to a flextable allows more control over formatting for creating publication-ready tables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the gtsummary package if not already installed</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gtsummary")</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(carrier, dest, temp, wind_speed, air_time, distance) <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> carrier,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="st">"no"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> gtsummary<span class="sc">::</span><span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ±&nbsp;{sd}"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> distance <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      dest <span class="sc">~</span> <span class="st">"Destination"</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      temp <span class="sc">~</span> <span class="st">"Temperature"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      wind_speed <span class="sc">~</span> <span class="st">"Wind Speed"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      air_time <span class="sc">~</span> <span class="st">"Time in the Air"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      distance <span class="sc">~</span> <span class="st">"Distance"</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">as_flex_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
