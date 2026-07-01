@@ -14,120 +14,16 @@
     ]
   },
   {
-    "listing": "/attendees/DavidTitus/about.html",
+    "listing": "/attendees/MorganBrucks/about.html",
     "items": [
-      "/attendees/DavidTitus/code/template.html"
+      "/attendees/MorganBrucks/code/whole-game.html",
+      "/attendees/MorganBrucks/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/IanWeidling/about.html",
+    "listing": "/attendees/RashelleHoffman/about.html",
     "items": [
-      "/attendees/IanWeidling/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/LeelaShah/about.html",
-    "items": [
-      "/attendees/LeelaShah/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KeithSmith/about.html",
-    "items": [
-      "/attendees/KeithSmith/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/RachelHantman/about.html",
-    "items": [
-      "/attendees/RachelHantman/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/DominicJavonillo/about.html",
-    "items": [
-      "/attendees/DominicJavonillo/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/MelissaJenkins/about.html",
-    "items": [
-      "/attendees/MelissaJenkins/code/whole-game.html",
-      "/attendees/MelissaJenkins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/StefaniBacaAtlas/about.html",
-    "items": [
-      "/attendees/StefaniBacaAtlas/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AshlynBarry/about.html",
-    "items": [
-      "/attendees/AshlynBarry/code/visualization_activities.html",
-      "/attendees/AshlynBarry/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SadafSalehi/about.html",
-    "items": [
-      "/attendees/SadafSalehi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SaraFortinMiller/about.html",
-    "items": [
-      "/attendees/SaraFortinMiller/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/BethanyForseth/about.html",
-    "items": [
-      "/attendees/BethanyForseth/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JackieAdedokun/about.html",
-    "items": [
-      "/attendees/JackieAdedokun/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/YasamanRazavi/about.html",
-    "items": [
-      "/attendees/YasamanRazavi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JohnHeap/about.html",
-    "items": [
-      "/attendees/JohnHeap/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
-    "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SullafaKadura/about.html",
-    "items": [
-      "/attendees/SullafaKadura/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AbassBabatunde/about.html",
-    "items": [
-      "/attendees/AbassBabatunde/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/MasonMcClarnon/about.html",
-    "items": [
-      "/attendees/MasonMcClarnon/code/whole-game.html",
-      "/attendees/MasonMcClarnon/code/template.html"
+      "/attendees/RashelleHoffman/code/template.html"
     ]
   },
   {
@@ -139,16 +35,121 @@
     ]
   },
   {
-    "listing": "/attendees/RashelleHoffman/about.html",
+    "listing": "/attendees/MasonMcClarnon/about.html",
     "items": [
-      "/attendees/RashelleHoffman/code/template.html"
+      "/attendees/MasonMcClarnon/code/whole-game.html",
+      "/attendees/MasonMcClarnon/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/MorganBrucks/about.html",
+    "listing": "/attendees/AbassBabatunde/about.html",
     "items": [
-      "/attendees/MorganBrucks/code/whole-game.html",
-      "/attendees/MorganBrucks/code/template.html"
+      "/attendees/AbassBabatunde/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SullafaKadura/about.html",
+    "items": [
+      "/attendees/SullafaKadura/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "items": [
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JohnHeap/about.html",
+    "items": [
+      "/attendees/JohnHeap/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/YasamanRazavi/about.html",
+    "items": [
+      "/attendees/YasamanRazavi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JackieAdedokun/about.html",
+    "items": [
+      "/attendees/JackieAdedokun/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/BethanyForseth/about.html",
+    "items": [
+      "/attendees/BethanyForseth/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SaraFortinMiller/about.html",
+    "items": [
+      "/attendees/SaraFortinMiller/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SadafSalehi/about.html",
+    "items": [
+      "/attendees/SadafSalehi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/AshlynBarry/about.html",
+    "items": [
+      "/attendees/AshlynBarry/code/visualization_activities.html",
+      "/attendees/AshlynBarry/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/StefaniBacaAtlas/about.html",
+    "items": [
+      "/attendees/StefaniBacaAtlas/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/MelissaJenkins/about.html",
+    "items": [
+      "/attendees/MelissaJenkins/code/whole-game.html",
+      "/attendees/MelissaJenkins/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/DominicJavonillo/about.html",
+    "items": [
+      "/attendees/DominicJavonillo/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/RachelHantman/about.html",
+    "items": [
+      "/attendees/RachelHantman/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/KeithSmith/about.html",
+    "items": [
+      "/attendees/KeithSmith/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/LeelaShah/about.html",
+    "items": [
+      "/attendees/LeelaShah/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/IanWeidling/about.html",
+    "items": [
+      "/attendees/IanWeidling/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/DavidTitus/about.html",
+    "items": [
+      "/attendees/DavidTitus/code/week_1_exercise.html",
+      "/attendees/DavidTitus/code/template.html"
     ]
   },
   {
