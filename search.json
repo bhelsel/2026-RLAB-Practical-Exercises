@@ -140,6 +140,41 @@
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
+    "objectID": "attendees/JulianneClina/code/ggplot2.html",
+    "href": "attendees/JulianneClina/code/ggplot2.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(palmerpenguins)\n \nnames(penguins)\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/ggplot2.html#loading-packages",
+    "href": "attendees/JulianneClina/code/ggplot2.html#loading-packages",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(palmerpenguins)\n \nnames(penguins)\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\""
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/ggplot2.html#activity-1-beginner-practice",
+    "href": "attendees/JulianneClina/code/ggplot2.html#activity-1-beginner-practice",
+    "title": "Practical Exercise Template",
+    "section": "Activity 1 Beginner Practice",
+    "text": "Activity 1 Beginner Practice\n\nggplot(\n  data = penguins,\n  mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = species)\n) +\n  geom_point() +\n  labs(\n    title = \"Bill length and bill depth by species\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(hjust = 0.5), \n    plot.subtitle = element_text(hjust = 0.5)\n  )"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/ggplot2.html#activity-2-intermdiate-practice",
+    "href": "attendees/JulianneClina/code/ggplot2.html#activity-2-intermdiate-practice",
+    "title": "Practical Exercise Template",
+    "section": "Activity 2 Intermdiate Practice",
+    "text": "Activity 2 Intermdiate Practice\n\ntheme_penguins &lt;- function() {\n  theme_minimal() +\n    theme(\n      plot.title.position = \"plot\",\n      plot.title = element_text(hjust = 1),\n      plot.subtitle = element_text(hjust = 1),\n      legend.position = \"bottom\",\n      panel.grid.major = element_blank(),\n      panel.grid.minor = element_blank(),\n      axis.line = element_line(color = \"blue\"),\n      axis.ticks = element_line(color = \"blue\")\n    )\n}\n\n  ggplot(\n  data = penguins,\n  mapping = aes(\n    x = flipper_length_mm,\n    y = body_mass_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~species) +\n  labs(\n    title = \"Penguin body mass by flipper length\",\n    subtitle = \"Faceted by species\",\n    x = \"Flipper length (mm)\",\n    y = \"Body Mass (g)\",\n    color = \"Species\"\n  ) +\n  theme_penguins()"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/ggplot2.html#activity-3-advanced-practice",
+    "href": "attendees/JulianneClina/code/ggplot2.html#activity-3-advanced-practice",
+    "title": "Practical Exercise Template",
+    "section": "Activity 3 Advanced Practice",
+    "text": "Activity 3 Advanced Practice\n\n  cars_theme &lt;- function() {\n  theme_classic() +\n    theme(\n      legend.position = \"bottom\",\n      plot.title = element_text(face = \"bold\"),\n      plot.subtitle = element_text(face = \"italic\")\n    )\n}\n\nggplot(\n  data = mtcars,\n  mapping = aes(\n    x = hp,\n    y = mpg,\n    color = factor(cyl),\n    shape = factor(cyl)\n  )\n) +\n  geom_point(size = 3) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  facet_wrap(\n    ~ am,\n    labeller = labeller(\n      am = c(\n        \"0\" = \"Automatic\",\n        \"1\" = \"Manual\"\n      )\n    )\n  ) +\n  labs(\n    title = \"Fuel economy by horsepower\",\n    subtitle = \"Colored by number of cylinders and faceted by transmission\",\n    x = \"Horsepower\",\n    y = \"Miles per gallon (mpg)\",\n    color = \"Number of cylinders\",\n    shape = \"Number of cylinders\"\n  ) +\n  cars_theme()"
+  },
+  {
     "objectID": "attendees/KameronSuire/code/template.html",
     "href": "attendees/KameronSuire/code/template.html",
     "title": "Practical Exercise Template",
@@ -942,7 +977,14 @@
     "href": "attendees/JulianneClina/about.html",
     "title": "Julianne Clina",
     "section": "",
-    "text": "Julianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\nNo matching items"
+    "text": "Julianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nWeek 3\n\n\n\n\n\n\n\n\nJul 8, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nWeek 1\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/whole-game.html",
+    "href": "attendees/JulianneClina/code/whole-game.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Week 1 practical assignment\n\nmessage(\"My first GitHub Push worked!\")\n\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
   },
   {
     "objectID": "attendees/KellieCollins/about.html",
