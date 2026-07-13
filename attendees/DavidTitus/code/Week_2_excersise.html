@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Brian Helsel, PhD">
+<meta name="author" content="David Titus">
 <meta name="dcterms.date" content="2026-07-01">
 
 <title>Transform – 2026 RLAB Practical Exercises</title>
@@ -107,8 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="../../../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
-<script src="../../../site_libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -180,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Brian Helsel, PhD </p>
+             <p>David Titus </p>
           </div>
   </div>
     
@@ -203,60 +201,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>To access each of the data sets in the nycflights13 R package</strong>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' If tidyverse is not installed:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' install.packages("tidyverse")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("nycflights13")</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package containing all the flight data</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>To access one of the data sets</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span> (flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
+<pre><code> [1] "year"           "month"          "day"            "dep_time"      
+ [5] "sched_dep_time" "dep_delay"      "arr_time"       "sched_arr_time"
+ [9] "arr_delay"      "carrier"        "flight"         "tailnum"       
+[13] "origin"         "dest"           "air_time"       "distance"      
+[17] "hour"           "minute"         "time_hour"     </code></pre>
+</div>
+</div>
+<p><strong>To view a description of the variables in a nycflights13 data set</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?nycflights13<span class="sc">::</span>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="filtering-by-air-time" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-by-air-time">Filtering by Air Time</h2>
+<p>Filter the flights data set by <code>air_time</code> and assign the results to a data set named flights. Filter the data to retrieve flights that are ≥ 2 hours and &lt; 4 hours.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>flights<span class="ot">&lt;-</span> nycflights13<span class="sc">::</span>flights</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">nrow</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 336776</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(air_time <span class="sc">&gt;=</span> <span class="dv">120</span> <span class="sc">&amp;</span> air_time <span class="sc">&lt;</span><span class="dv">240</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 124,299 × 19
     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
  1  2013     1     1      517            515         2      830            819
  2  2013     1     1      533            529         4      850            830
  3  2013     1     1      542            540         2      923            850
  4  2013     1     1      544            545        -1     1004           1022
- 5  2013     1     1      554            600        -6      812            837
- 6  2013     1     1      554            558        -4      740            728
- 7  2013     1     1      555            600        -5      913            854
- 8  2013     1     1      557            600        -3      709            723
- 9  2013     1     1      557            600        -3      838            846
-10  2013     1     1      558            600        -2      753            745
-# ℹ 336,766 more rows
+ 5  2013     1     1      554            558        -4      740            728
+ 6  2013     1     1      555            600        -5      913            854
+ 7  2013     1     1      557            600        -3      838            846
+ 8  2013     1     1      558            600        -2      753            745
+ 9  2013     1     1      558            600        -2      849            851
+10  2013     1     1      558            600        -2      853            856
+# ℹ 124,289 more rows
 # ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,
 #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 124299</code></pre>
 </div>
-<p><strong>To view a description of the variables in a nycflights13 data set</strong>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="filtering-by-air-time" class="level2">
-<h2 class="anchored" data-anchor-id="filtering-by-air-time">Filtering by Air Time</h2>
-<p>Filter the flights data set by <code>air_time</code> and assign the results to a data set named flights. Filter the data to retrieve flights that are ≥ 2 hours and &lt; 4 hours.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(air_time <span class="sc">&gt;=</span> <span class="dv">120</span> <span class="sc">&amp;</span> air_time <span class="sc">&lt;</span> <span class="dv">240</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="date-and-time-variable" class="level2">
 <h2 class="anchored" data-anchor-id="date-and-time-variable">Date and Time Variable</h2>
 <p>Use the <code>year</code>, <code>month</code>, and <code>day</code> variable in the data set to create a <code>date</code> variable. Use this date variable to modify the <code>dep_time</code> and <code>arr_time</code> to create time stamps.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">make_date</span>(year, month, day),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">across</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(dep_time, arr_time),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> lubridate<span class="sc">::</span><span class="fu">ymd_hm</span>(<span class="fu">paste</span>(date, <span class="fu">sprintf</span>(<span class="st">"%04d"</span>, .x)))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">date =</span> lubridate<span class="sc">::</span><span class="fu">make_date</span>(year, month, day),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">dep_time =</span> lubridate<span class="sc">::</span><span class="fu">make_datetime</span>(year, month, day,  dep_time <span class="sc">%/%</span> <span class="dv">100</span>, dep_time <span class="sc">%%</span> <span class="dv">100</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">arr_time =</span> lubridate<span class="sc">::</span><span class="fu">make_datetime</span>(year, month, day, arr_time <span class="sc">%/%</span> <span class="dv">100</span>, arr_time <span class="sc">%%</span> <span class="dv">100</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 124,299 × 20
+    year month   day dep_time            sched_dep_time dep_delay
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;
+ 1  2013     1     1 2013-01-01 05:17:00            515         2
+ 2  2013     1     1 2013-01-01 05:33:00            529         4
+ 3  2013     1     1 2013-01-01 05:42:00            540         2
+ 4  2013     1     1 2013-01-01 05:44:00            545        -1
+ 5  2013     1     1 2013-01-01 05:54:00            558        -4
+ 6  2013     1     1 2013-01-01 05:55:00            600        -5
+ 7  2013     1     1 2013-01-01 05:57:00            600        -3
+ 8  2013     1     1 2013-01-01 05:58:00            600        -2
+ 9  2013     1     1 2013-01-01 05:58:00            600        -2
+10  2013     1     1 2013-01-01 05:58:00            600        -2
+# ℹ 124,289 more rows
+# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,
+#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,
+#   date &lt;date&gt;</code></pre>
+</div>
 </div>
 <p><strong>Hint</strong>: Look at the <code>nycflights13::flights</code> documentation to review the format of the <code>dep_time</code> and <code>arr_time</code> variables. Zero padding can be added with <code>sprintf("%04d", x)</code> where <code>x</code> is the name of the variable.</p>
 </section>
@@ -264,74 +301,155 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="filtering-by-flight-details">Filtering by Flight Details</h2>
 <p>Apply an additional filtering criteria that captures flights to the Orlando, Fort Lauderdale, and Miami airports from American Airlines, Delta Air Lines, and United Airlines.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    dest <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MCO"</span>, <span class="st">"FLL"</span>, <span class="st">"MIA"</span>) <span class="sc">&amp;</span> carrier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"DL"</span>, <span class="st">"UA"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#nycflights13::airports|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#dplyr::filter(stringr::str_detect(name, "Orlando"))</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a> dplyr<span class="sc">::</span><span class="fu">filter</span>(carrier <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>,  <span class="st">"DL"</span>,  <span class="st">"UA"</span>) <span class="sc">&amp;</span> dest<span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MIA"</span>,   <span class="st">"FLL"</span> ,  <span class="st">"MCO"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(flights)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24355</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(flights<span class="sc">$</span>carrier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  AA   DL   UA 
+8041 9281 7033 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24,355 × 20
+    year month   day dep_time            sched_dep_time dep_delay
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;
+ 1  2013     1     1 2013-01-01 05:42:00            540         2
+ 2  2013     1     1 2013-01-01 06:06:00            610        -4
+ 3  2013     1     1 2013-01-01 06:07:00            607         0
+ 4  2013     1     1 2013-01-01 06:23:00            610        13
+ 5  2013     1     1 2013-01-01 06:44:00            636         8
+ 6  2013     1     1 2013-01-01 06:55:00            700        -5
+ 7  2013     1     1 2013-01-01 06:56:00            659        -3
+ 8  2013     1     1 2013-01-01 06:57:00            700        -3
+ 9  2013     1     1 2013-01-01 06:59:00            700        -1
+10  2013     1     1 2013-01-01 07:12:00            715        -3
+# ℹ 24,345 more rows
+# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,
+#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,
+#   date &lt;date&gt;</code></pre>
+</div>
 </div>
 </section>
 <section id="factor-variables" class="level2">
 <h2 class="anchored" data-anchor-id="factor-variables">Factor Variables</h2>
 <p>Create a factor variable for <code>carrier</code> that includes American Airlines, Delta Air Lines, and United Airlines as the labels. Create another factor variable for <code>dest</code> that includes Orlando, Fort Lauderdale, and Miami.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dest =</span> <span class="fu">factor</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      dest,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"MCO"</span>, <span class="st">"FLL"</span>, <span class="st">"MIA"</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Orlando"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Fort Lauderdale"</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Miami"</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">carrier =</span> <span class="fu">factor</span>(</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>      carrier,</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"DL"</span>, <span class="st">"UA"</span>),</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"American Airlines"</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Delta Air Lines"</span>,</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"United Airlines"</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here...</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">carrier =</span> <span class="fu">factor</span>(carrier, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"DL"</span>, <span class="st">"UA"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"American Airlines"</span>, <span class="st">"Delta Air Lines"</span>, <span class="st">"United Airlines"</span>)),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">dest =</span> <span class="fu">factor</span>(dest, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"MIA"</span>, <span class="st">"FLL"</span>, <span class="st">"MCO"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Miami"</span>, <span class="st">"Fort Lauderdale"</span>, <span class="st">"Orlando"</span>))</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24,355 × 20
+    year month   day dep_time            sched_dep_time dep_delay
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;
+ 1  2013     1     1 2013-01-01 05:42:00            540         2
+ 2  2013     1     1 2013-01-01 06:06:00            610        -4
+ 3  2013     1     1 2013-01-01 06:07:00            607         0
+ 4  2013     1     1 2013-01-01 06:23:00            610        13
+ 5  2013     1     1 2013-01-01 06:44:00            636         8
+ 6  2013     1     1 2013-01-01 06:55:00            700        -5
+ 7  2013     1     1 2013-01-01 06:56:00            659        -3
+ 8  2013     1     1 2013-01-01 06:57:00            700        -3
+ 9  2013     1     1 2013-01-01 06:59:00            700        -1
+10  2013     1     1 2013-01-01 07:12:00            715        -3
+# ℹ 24,345 more rows
+# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,
+#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,
+#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,
+#   date &lt;date&gt;</code></pre>
+</div>
 </div>
 </section>
 <section id="join-flights-with-weather" class="level2">
 <h2 class="anchored" data-anchor-id="join-flights-with-weather">Join Flights with Weather</h2>
 <p>Join the <code>temp</code> and <code>wind_speed</code> variables from the weather data set to flights. You will need to select these variables first along with the <strong>2 variables</strong> that you need as identifers to merge with the flights data set.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> weather <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(origin, time_hour, temp, wind_speed) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">inner_join</span>(flights, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Code here</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#names(nycflights13::weather)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>weather_subset <span class="ot">&lt;-</span> nycflights13<span class="sc">::</span>weather <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(origin, time_hour, temp, wind_speed)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>weather_subset</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 26,115 × 4
+   origin time_hour            temp wind_speed
+   &lt;chr&gt;  &lt;dttm&gt;              &lt;dbl&gt;      &lt;dbl&gt;
+ 1 EWR    2013-01-01 01:00:00  39.0      10.4 
+ 2 EWR    2013-01-01 02:00:00  39.0       8.06
+ 3 EWR    2013-01-01 03:00:00  39.0      11.5 
+ 4 EWR    2013-01-01 04:00:00  39.9      12.7 
+ 5 EWR    2013-01-01 05:00:00  39.0      12.7 
+ 6 EWR    2013-01-01 06:00:00  37.9      11.5 
+ 7 EWR    2013-01-01 07:00:00  39.0      15.0 
+ 8 EWR    2013-01-01 08:00:00  39.9      10.4 
+ 9 EWR    2013-01-01 09:00:00  39.9      15.0 
+10 EWR    2013-01-01 10:00:00  41        13.8 
+# ℹ 26,105 more rows</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(weather_subset, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>flights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24,355 × 22
+    year month   day dep_time            sched_dep_time dep_delay
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;
+ 1  2013     1     1 2013-01-01 05:42:00            540         2
+ 2  2013     1     1 2013-01-01 06:06:00            610        -4
+ 3  2013     1     1 2013-01-01 06:07:00            607         0
+ 4  2013     1     1 2013-01-01 06:23:00            610        13
+ 5  2013     1     1 2013-01-01 06:44:00            636         8
+ 6  2013     1     1 2013-01-01 06:55:00            700        -5
+ 7  2013     1     1 2013-01-01 06:56:00            659        -3
+ 8  2013     1     1 2013-01-01 06:57:00            700        -3
+ 9  2013     1     1 2013-01-01 06:59:00            700        -1
+10  2013     1     1 2013-01-01 07:12:00            715        -3
+# ℹ 24,345 more rows
+# ℹ 16 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,
+#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,
+#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,
+#   date &lt;date&gt;, temp &lt;dbl&gt;, wind_speed &lt;dbl&gt;</code></pre>
+</div>
 </div>
 </section>
 <section id="run-a-summary-table" class="level2">
 <h2 class="anchored" data-anchor-id="run-a-summary-table">Run a Summary Table</h2>
 <p>Execute the code below to view a table summarizing the destination, temperature, wind speed, time in the air, and distance by Airline carrier. The <code>gtsummary</code> package is excellent for building tables in R for presentations or manuscripts. Converting to a flextable allows more control over formatting for creating publication-ready tables.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the gtsummary package if not already installed</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gtsummary")</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(carrier, dest, temp, wind_speed, air_time, distance) <span class="sc">|&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> carrier,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="st">"no"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> gtsummary<span class="sc">::</span><span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ±&nbsp;{sd}"</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> distance <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      dest <span class="sc">~</span> <span class="st">"Destination"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      temp <span class="sc">~</span> <span class="st">"Temperature"</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      wind_speed <span class="sc">~</span> <span class="st">"Wind Speed"</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      air_time <span class="sc">~</span> <span class="st">"Time in the Air"</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      distance <span class="sc">~</span> <span class="st">"Distance"</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">as_flex_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="tabwid"><style>.cl-a3f50b54{}.cl-a3ec352e{font-family:'DejaVu Sans';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a3ec3542{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a3ec3543{font-family:'DejaVu Sans';font-size:6.6pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;vertical-align:super;}.cl-a3efcf9a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2pt;padding-top:2pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3efcfa4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2pt;padding-top:2pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3efcfae{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3efcfaf{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3efcfb0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:15pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3efcfb8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a3eff8b2{width:1.679in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8bc{width:1.901in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8bd{width:1.647in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8be{width:1.661in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8c6{width:1.679in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8c7{width:1.901in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8d0{width:1.647in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8d1{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8d2{width:1.679in;background-color:transparent;vertical-align: top;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8da{width:1.901in;background-color:transparent;vertical-align: top;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8db{width:1.647in;background-color:transparent;vertical-align: top;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8dc{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8e4{width:1.679in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8e5{width:1.901in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8e6{width:1.647in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a3eff8ee{width:1.661in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a3f50b54"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a3eff8b2"><p class="cl-a3efcf9a"><span class="cl-a3ec352e">Characteristic</span></p></th><th class="cl-a3eff8bc"><p class="cl-a3efcfa4"><span class="cl-a3ec352e">American Airlines</span><span class="cl-a3ec3542">  </span><br><span class="cl-a3ec3542">N = 8,011</span><span class="cl-a3ec3543">1</span></p></th><th class="cl-a3eff8bd"><p class="cl-a3efcfa4"><span class="cl-a3ec352e">Delta Air Lines</span><span class="cl-a3ec3542">  </span><br><span class="cl-a3ec3542">N = 9,247</span><span class="cl-a3ec3543">1</span></p></th><th class="cl-a3eff8be"><p class="cl-a3efcfa4"><span class="cl-a3ec352e">United Airlines</span><span class="cl-a3ec3542">  </span><br><span class="cl-a3ec3542">N = 6,987</span><span class="cl-a3ec3543">1</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfae"><span class="cl-a3ec3542">Destination</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542"></span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542"></span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfb0"><span class="cl-a3ec3542">Orlando</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">717 (9.0%)</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">3,490 (38%)</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">3,089 (44%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfb0"><span class="cl-a3ec3542">Fort Lauderdale</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">179 (2.2%)</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">2,864 (31%)</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">2,360 (34%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfb0"><span class="cl-a3ec3542">Miami</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">7,115 (89%)</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">2,893 (31%)</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">1,538 (22%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfae"><span class="cl-a3ec3542">Temperature</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">55 ±&nbsp;18</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">57 ±&nbsp;18</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">56 ±&nbsp;18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfae"><span class="cl-a3ec3542">Wind Speed</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">11.2 ±&nbsp;5.6</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">11.7 ±&nbsp;5.5</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">10.1 ±&nbsp;5.5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8c6"><p class="cl-a3efcfae"><span class="cl-a3ec3542">Time in the Air</span></p></td><td class="cl-a3eff8c7"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">152 ±&nbsp;12</span></p></td><td class="cl-a3eff8d0"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">147 ±&nbsp;15</span></p></td><td class="cl-a3eff8d1"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">146 ±&nbsp;14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a3eff8d2"><p class="cl-a3efcfae"><span class="cl-a3ec3542">Distance</span></p></td><td class="cl-a3eff8da"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">1,078 ±&nbsp;42</span></p></td><td class="cl-a3eff8db"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">1,032 ±&nbsp;66</span></p></td><td class="cl-a3eff8dc"><p class="cl-a3efcfaf"><span class="cl-a3ec3542">1,013 ±&nbsp;68</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="4" class="cl-a3eff8e4"><p class="cl-a3efcfb8"><span class="cl-a3ec3543">1</span><span class="cl-a3ec3542">n (%); Mean ±&nbsp;SD</span></p></td></tr></tfoot></table></div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the gtsummary package if not already installed</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gtsummary"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(carrier, dest, temp, wind_speed, air_time, distance) <span class="sc">|&gt;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> carrier,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="st">"no"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">statistic =</span> gtsummary<span class="sc">::</span><span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ±&nbsp;{sd}"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> distance <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>      dest <span class="sc">~</span> <span class="st">"Destination"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>      temp <span class="sc">~</span> <span class="st">"Temperature"</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>      wind_speed <span class="sc">~</span> <span class="st">"Wind Speed"</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>      air_time <span class="sc">~</span> <span class="st">"Time in the Air"</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>      distance <span class="sc">~</span> <span class="st">"Distance"</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">as_flex_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
