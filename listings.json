@@ -82,45 +82,11 @@
     ]
   },
   {
-    "listing": "/attendees/SullafaKadura/about.html",
+    "listing": "/attendees/AshlynBarry/about.html",
     "items": [
-      "/attendees/SullafaKadura/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
-    "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JohnHeap/about.html",
-    "items": [
-      "/attendees/JohnHeap/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/YasamanRazavi/about.html",
-    "items": [
-      "/attendees/YasamanRazavi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JackieAdedokun/about.html",
-    "items": [
-      "/attendees/JackieAdedokun/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/BethanyForseth/about.html",
-    "items": [
-      "/attendees/BethanyForseth/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SaraFortinMiller/about.html",
-    "items": [
-      "/attendees/SaraFortinMiller/code/template.html"
+      "/attendees/AshlynBarry/code/visualization_activities.html",
+      "/attendees/AshlynBarry/code/visualization_activities_solution.html",
+      "/attendees/AshlynBarry/code/template.html"
     ]
   },
   {
@@ -130,10 +96,45 @@
     ]
   },
   {
-    "listing": "/attendees/AshlynBarry/about.html",
+    "listing": "/attendees/SaraFortinMiller/about.html",
     "items": [
-      "/attendees/AshlynBarry/code/visualization_activities.html",
-      "/attendees/AshlynBarry/code/template.html"
+      "/attendees/SaraFortinMiller/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/BethanyForseth/about.html",
+    "items": [
+      "/attendees/BethanyForseth/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JackieAdedokun/about.html",
+    "items": [
+      "/attendees/JackieAdedokun/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/YasamanRazavi/about.html",
+    "items": [
+      "/attendees/YasamanRazavi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JohnHeap/about.html",
+    "items": [
+      "/attendees/JohnHeap/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "items": [
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SullafaKadura/about.html",
+    "items": [
+      "/attendees/SullafaKadura/code/template.html"
     ]
   },
   {
