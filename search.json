@@ -427,410 +427,235 @@
     "text": "Check your understanding\n\nWhy does extracting all tables produce a list?\nWhy should you inspect the tables before choosing tables[[1]]?\nHow is scraping a webpage different from importing a stable CSV?\nWhen might an API be preferable to web scraping?"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html",
-    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html",
-    "title": "ggplot2 Hands-On Practice",
+    "objectID": "attendees/JulianneClina/about.html",
+    "href": "attendees/JulianneClina/about.html",
+    "title": "Julianne Clina",
     "section": "",
-    "text": "Time to apply what we learned! Work through the activity that matches your experience level. If you finish early, try the bonus question or move on to the next level!"
+    "text": "Julianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgramming\n\n\n\n\n\n\n\n\n\n\n\nJul 23, 2026\n\n\nYour Name\n\n\n\n\n\n\n\n\n\n\n\n\nData Import Hands-on Practice\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2026\n\n\nJulianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\nggplot 2 Practice\n\n\nWeek 3\n\n\n\n\n\n\n\n\nJul 8, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nWhole Game Practice\n\n\nWeek 1\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-1-fill-in-the-blanks",
-    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-1-fill-in-the-blanks",
-    "title": "ggplot2 Hands-On Practice",
-    "section": "Activity 1: Fill in the blanks",
-    "text": "Activity 1: Fill in the blanks\nGoal: Build a scatterplot of penguin bill length vs. bill depth, colored by species, using what you learned today.\nInstructions: Fill in the ___ blanks to complete the code. Run it and check that your plot displays correctly!\n\nggplot(\n  data = penguins,\n  mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = species)\n) +\n  geom_point() +\n  labs(\n    title = \"Bill length and bill depth by species\",\n    x = \"Bill length (mm)\",\n    y = \"Bill Depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(h = 0.5),\n    plot.subtitle = element_text(h = 0.5)\n  )\n\nHints:\n\nThe dataset you’ve been using all day goes in the first blank\nFind the variable name for bill depth\nUse the same geom as the scatterplots in the presentation\nAxis labels should be human-readable (e.g., “Bill depth (mm)”)\nRevist Manually modifying theme slides to center titles\n\nBonus: Can you also add shape = species inside aes() to make the plot accessible to colorblind viewers?"
-  },
-  {
-    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-2-update-the-facet-plots",
-    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-2-update-the-facet-plots",
-    "title": "ggplot2 Hands-On Practice",
-    "section": "Activity 2: Update the facet plots",
-    "text": "Activity 2: Update the facet plots\nGoal: Recreate and then enhance the faceted penguin plot from the presentation.\nInstructions: Start with the faceted plot from the slides, then make the following modifications:\n\nApply a theme — add a theme with the following specifications:\n\n\nPosition the title and subtitle to be right aligned\nSet the legend position to “bottom”\nRemove major and minor gridlines\nAdd axes lines that are colored blue\nSet your theme as a function before applying it to your figure.\n\n\nAdd color — map color = species inside so each species panel has a distinct color\nFix the legend position — the default legend.position = c(0.85, 0.2) may overlap the facets; adjust it to \"bottom\" instead Bonus: Try facet_grid(sex ~ species) instead of facet_wrap(~ species). What changes? What does this tell you that the original plot didn’t?\n\n\n# Facet plots from presentation - modify according to instructions above\nmytheme &lt;- ggplot2::theme_minimal() +\n  theme(\n    plot.title = element_text(hjust = 1, face = \"bold\"), # hor. adjust title to center\n    plot.subtitle = element_text(hjust = 1, face = \"bold\"), # hor. adjust subtitle to center\n    legend.position = \"bottom\", # x, y from bottom-left corner on scale 0-1\n    panel.grid.major = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.line = element_line(color = \"blue\")\n  )\n\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)\n) +\n  geom_point() +\n  facet_wrap(~species) +\n  labs(\n    title = \"Penguin body mass by flipper length\",\n    subtitle = \"Faceted by species\",\n    x = \"Flipper length (mm)\",\n    y = \"Body Mass (g)\",\n    color = \"species\"\n  ) +\n  mytheme"
-  },
-  {
-    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-3-create-figure-using-new-dataset",
-    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-3-create-figure-using-new-dataset",
-    "title": "ggplot2 Hands-On Practice",
-    "section": "Activity 3: Create figure using new dataset",
-    "text": "Activity 3: Create figure using new dataset\nGoal: Use the mtcars dataset to independently apply everything from the presentation to answer a research question.\nBackground: mtcars is a built-in R dataset containing performance and design specs for 32 car models. Run ?mtcars to see the full variable list. Key variables:\n\n\n\nVariable\nDescription\n\n\n\n\nmpg\nMiles per gallon\n\n\nhp\nHorsepower\n\n\nwt\nWeight (1000 lbs)\n\n\ncyl\nNumber of cylinders (4, 6, or 8)\n\n\nam\nTransmission (0 = automatic, 1 = manual)\n\n\n\nResearch question: Does the relationship between horsepower and fuel efficiency differ by number of cylinders?\nYour task — build a complete, publication-ready figure that:\n\nPlots horsepower (x) vs. mpg (y) as a scatterplot\nAssigns colors and shapes points by number of cylinders — the variable is numeric, so you’ll need factor(cyl) inside aes() to treat it as a category\nAdds a line of best fit per cylinder group `\nFacets by transmission type — use labeller = labeller(am = c(\"0\" = \"Automatic\", \"1\" = \"Manual\")) inside facet_wrap() to replace 0/1 with readable labels\nApplies a clean custom theme\nHas polished axis labels, a title, and a subtitle\n\n\n# Your code here!\n\nBonus: Add se = TRUE back to geom_smooth() (it’s the default). What does the shaded ribbon represent, and when might it be useful in a scientific figure?"
-  },
-  {
-    "objectID": "attendees/DavidTitus/code/week_1_exercise.html",
-    "href": "attendees/DavidTitus/code/week_1_exercise.html",
-    "title": "Week 1: Basics in R",
-    "section": "",
-    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request."
-  },
-  {
-    "objectID": "attendees/DavidTitus/code/week_1_exercise.html#hello-r-lab",
-    "href": "attendees/DavidTitus/code/week_1_exercise.html#hello-r-lab",
-    "title": "Week 1: Basics in R",
-    "section": "Hello R-LAB",
-    "text": "Hello R-LAB\n\nlibrary(dplyr)\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
-  },
-  {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html",
     "title": "Transform",
     "section": "",
     "text": "Assignment. Practice using the dplyr functions with the nycflights13 data sets. The data sets contained in the nycflights13 package include flights, weather, planes, airports, and airlines.\nTo access each of the data sets in the nycflights13 R package:\n#' If tidyverse is not installed:\n#install.packages(\"tidyverse\")\n#install.packages(\"nycflights13\")\n# Load the package containing all the flight data\nlibrary(nycflights13)\nTo access one of the data sets:\nnames (flights)\n\n [1] \"year\"           \"month\"          \"day\"            \"dep_time\"      \n [5] \"sched_dep_time\" \"dep_delay\"      \"arr_time\"       \"sched_arr_time\"\n [9] \"arr_delay\"      \"carrier\"        \"flight\"         \"tailnum\"       \n[13] \"origin\"         \"dest\"           \"air_time\"       \"distance\"      \n[17] \"hour\"           \"minute\"         \"time_hour\"\nTo view a description of the variables in a nycflights13 data set:\n?nycflights13::flights"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-air-time",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-air-time",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-air-time",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-air-time",
     "title": "Transform",
     "section": "Filtering by Air Time",
     "text": "Filtering by Air Time\nFilter the flights data set by air_time and assign the results to a data set named flights. Filter the data to retrieve flights that are ≥ 2 hours and &lt; 4 hours.\n\nlibrary(tidyverse)\n# Code here...\nflights&lt;- nycflights13::flights\n nrow(flights)\n\n[1] 336776\n\nflights &lt;- flights |&gt;\n  dplyr::filter(air_time &gt;= 120 & air_time &lt;240)\nflights\n\n# A tibble: 124,299 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            558        -4      740            728\n 6  2013     1     1      555            600        -5      913            854\n 7  2013     1     1      557            600        -3      838            846\n 8  2013     1     1      558            600        -2      753            745\n 9  2013     1     1      558            600        -2      849            851\n10  2013     1     1      558            600        -2      853            856\n# ℹ 124,289 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\nnrow(flights)\n\n[1] 124299"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#date-and-time-variable",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#date-and-time-variable",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#date-and-time-variable",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#date-and-time-variable",
     "title": "Transform",
     "section": "Date and Time Variable",
     "text": "Date and Time Variable\nUse the year, month, and day variable in the data set to create a date variable. Use this date variable to modify the dep_time and arr_time to create time stamps.\n\n# Code here...\nflights &lt;- flights |&gt;\n    dplyr::mutate(\n     date = lubridate::make_date(year, month, day),\n     dep_time = lubridate::make_datetime(year, month, day,  dep_time %/% 100, dep_time %% 100),\n     arr_time = lubridate::make_datetime(year, month, day, arr_time %/% 100, arr_time %% 100)\n\n  )\n\nflights\n\n# A tibble: 124,299 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:17:00            515         2\n 2  2013     1     1 2013-01-01 05:33:00            529         4\n 3  2013     1     1 2013-01-01 05:42:00            540         2\n 4  2013     1     1 2013-01-01 05:44:00            545        -1\n 5  2013     1     1 2013-01-01 05:54:00            558        -4\n 6  2013     1     1 2013-01-01 05:55:00            600        -5\n 7  2013     1     1 2013-01-01 05:57:00            600        -3\n 8  2013     1     1 2013-01-01 05:58:00            600        -2\n 9  2013     1     1 2013-01-01 05:58:00            600        -2\n10  2013     1     1 2013-01-01 05:58:00            600        -2\n# ℹ 124,289 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;\n\n\nHint: Look at the nycflights13::flights documentation to review the format of the dep_time and arr_time variables. Zero padding can be added with sprintf(\"%04d\", x) where x is the name of the variable."
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-flight-details",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-flight-details",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-flight-details",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-flight-details",
     "title": "Transform",
     "section": "Filtering by Flight Details",
     "text": "Filtering by Flight Details\nApply an additional filtering criteria that captures flights to the Orlando, Fort Lauderdale, and Miami airports from American Airlines, Delta Air Lines, and United Airlines.\n\n#nycflights13::airports|&gt;\n  #dplyr::filter(stringr::str_detect(name, \"Orlando\"))\n\n# Code here...\nflights &lt;- flights |&gt; \n dplyr::filter(carrier %in% c(\"AA\",  \"DL\",  \"UA\") & dest%in% c(\"MIA\",   \"FLL\" ,  \"MCO\"))\nnrow(flights)\n\n[1] 24355\n\ntable(flights$carrier)\n\n\n  AA   DL   UA \n8041 9281 7033 \n\nflights\n\n# A tibble: 24,355 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#factor-variables",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#factor-variables",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#factor-variables",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#factor-variables",
     "title": "Transform",
     "section": "Factor Variables",
     "text": "Factor Variables\nCreate a factor variable for carrier that includes American Airlines, Delta Air Lines, and United Airlines as the labels. Create another factor variable for dest that includes Orlando, Fort Lauderdale, and Miami.\n\n# Code here...\nflights &lt;- flights |&gt;\n\n  dplyr::mutate(\n\n    carrier = factor(carrier, levels = c(\"AA\", \"DL\", \"UA\"), labels = c(\"American Airlines\", \"Delta Air Lines\", \"United Airlines\")),\n\n    dest = factor(dest, levels = c(\"MIA\", \"FLL\", \"MCO\"), labels = c(\"Miami\", \"Fort Lauderdale\", \"Orlando\"))\n\n  )\n  flights\n\n# A tibble: 24,355 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#join-flights-with-weather",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#join-flights-with-weather",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#join-flights-with-weather",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#join-flights-with-weather",
     "title": "Transform",
     "section": "Join Flights with Weather",
     "text": "Join Flights with Weather\nJoin the temp and wind_speed variables from the weather data set to flights. You will need to select these variables first along with the 2 variables that you need as identifers to merge with the flights data set.\n\n## Code here\n#names(nycflights13::weather)\nweather_subset &lt;- nycflights13::weather |&gt;\n  dplyr::select(origin, time_hour, temp, wind_speed)\nweather_subset\n\n# A tibble: 26,115 × 4\n   origin time_hour            temp wind_speed\n   &lt;chr&gt;  &lt;dttm&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 EWR    2013-01-01 01:00:00  39.0      10.4 \n 2 EWR    2013-01-01 02:00:00  39.0       8.06\n 3 EWR    2013-01-01 03:00:00  39.0      11.5 \n 4 EWR    2013-01-01 04:00:00  39.9      12.7 \n 5 EWR    2013-01-01 05:00:00  39.0      12.7 \n 6 EWR    2013-01-01 06:00:00  37.9      11.5 \n 7 EWR    2013-01-01 07:00:00  39.0      15.0 \n 8 EWR    2013-01-01 08:00:00  39.9      10.4 \n 9 EWR    2013-01-01 09:00:00  39.9      15.0 \n10 EWR    2013-01-01 10:00:00  41        13.8 \n# ℹ 26,105 more rows\n\nflights &lt;- flights |&gt;\n  dplyr::left_join(weather_subset, by = c(\"origin\", \"time_hour\"))\nflights\n\n# A tibble: 24,355 × 22\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 16 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;, temp &lt;dbl&gt;, wind_speed &lt;dbl&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#run-a-summary-table",
-    "href": "attendees/DavidTitus/code/Week_2_excersise.html#run-a-summary-table",
+    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#run-a-summary-table",
+    "href": "attendees/DavidTitus/code/week_2_exercise.html#run-a-summary-table",
     "title": "Transform",
     "section": "Run a Summary Table",
     "text": "Run a Summary Table\nExecute the code below to view a table summarizing the destination, temperature, wind speed, time in the air, and distance by Airline carrier. The gtsummary package is excellent for building tables in R for presentations or manuscripts. Converting to a flextable allows more control over formatting for creating publication-ready tables.\n\n# Install the gtsummary package if not already installed\ninstall.packages(\"gtsummary\")\n\nflights |&gt;\n  dplyr::select(carrier, dest, temp, wind_speed, air_time, distance) |&gt;\n  gtsummary::tbl_summary(\n    by = carrier,\n    missing = \"no\",\n    statistic = gtsummary::all_continuous() ~ \"{mean} ± {sd}\",\n    type = distance ~ \"continuous\",\n    label = list(\n      dest ~ \"Destination\",\n      temp ~ \"Temperature\",\n      wind_speed ~ \"Wind Speed\",\n      air_time ~ \"Time in the Air\",\n      distance ~ \"Distance\"\n    )\n  ) |&gt;\n  gtsummary::as_flex_table()"
   },
   {
-    "objectID": "attendees/RashelleHoffman/code/whole-game.html",
-    "href": "attendees/RashelleHoffman/code/whole-game.html",
-    "title": "The Whole Game Practice",
+    "objectID": "attendees/DavidTitus/code/template.html",
+    "href": "attendees/DavidTitus/code/template.html",
+    "title": "Week 1: Basics in R",
     "section": "",
-    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/RashelleHoffman/about.html",
-    "href": "attendees/RashelleHoffman/about.html",
-    "title": "Rashelle Hoffman",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nRashelle Hoffman\n\n\n\n\n\n\n\n\n\n\n\n\nThe Whole Game Practice\n\n\nMy First GitHub Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nRashelle Hoffman, PT, DPT, PhD\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/WasayefBsharat/about.html",
-    "href": "attendees/WasayefBsharat/about.html",
-    "title": "Wasayef Bsharat",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nWasayef Bsharat\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/ElhamGhanbarian/about.html",
-    "href": "attendees/ElhamGhanbarian/about.html",
-    "title": "Elham Ghanbarian",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElham Ghanbarian\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/YasamanRazavi/about.html",
-    "href": "attendees/YasamanRazavi/about.html",
-    "title": "Yasaman Razavi",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nYasaman Razavi\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html",
-    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html",
-    "title": "The Whole Game Practice",
-    "section": "",
-    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
-  },
-  {
-    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-dplyr",
-    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-dplyr",
-    "title": "The Whole Game Practice",
+    "objectID": "attendees/DavidTitus/code/template.html#introduction-to-dplyr",
+    "href": "attendees/DavidTitus/code/template.html#introduction-to-dplyr",
+    "title": "Week 1: Basics in R",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-ggplot2",
-    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-ggplot2",
-    "title": "The Whole Game Practice",
+    "objectID": "attendees/DavidTitus/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/DavidTitus/code/template.html#introduction-to-ggplot2",
+    "title": "Week 1: Basics in R",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/JackieAdedokun/code/template.html",
-    "href": "attendees/JackieAdedokun/code/template.html",
+    "objectID": "attendees/DavidTitus/about.html",
+    "href": "attendees/DavidTitus/about.html",
+    "title": "David Titus",
+    "section": "",
+    "text": "ggplot2 Hands-On Practice\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nTransform\n\n\nPractice using the dplyr functions with the nycflights13 data sets\n\n\n\n\n\n\n\n\nJul 1, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nTransform\n\n\nPractice using the dplyr functions with the nycflights13 data sets\n\n\n\n\n\n\n\n\nJul 1, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1: Basics in R\n\n\nPractice Reading and Manipulating Data\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1: Basics in R\n\n\nPractice Reading and Manipulating Data\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDavid Titus\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/RashelleHoffman/code/template.html",
+    "href": "attendees/RashelleHoffman/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/JackieAdedokun/code/template.html#introduction-to-dplyr",
-    "href": "attendees/JackieAdedokun/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/RashelleHoffman/code/template.html#introduction-to-dplyr",
+    "href": "attendees/RashelleHoffman/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/JackieAdedokun/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/JackieAdedokun/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/RashelleHoffman/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/RashelleHoffman/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/JohnHeap/code/template.html",
-    "href": "attendees/JohnHeap/code/template.html",
+    "objectID": "attendees/WasayefBsharat/code/template.html",
+    "href": "attendees/WasayefBsharat/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/JohnHeap/code/template.html#introduction-to-dplyr",
-    "href": "attendees/JohnHeap/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/WasayefBsharat/code/template.html#introduction-to-dplyr",
+    "href": "attendees/WasayefBsharat/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/JohnHeap/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/JohnHeap/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/WasayefBsharat/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/WasayefBsharat/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/MorganBrucks/code/whole-game.html",
-    "href": "attendees/MorganBrucks/code/whole-game.html",
-    "title": "The whole game practice",
-    "section": "",
-    "text": "message(\"First time using the insert code chunk button!\")\n\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
-  },
-  {
-    "objectID": "attendees/MorganBrucks/about.html",
-    "href": "attendees/MorganBrucks/about.html",
-    "title": "Morgan Brucks",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\n\n\n\n\n\n\n\nThe whole game practice\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/IanWeidling/code/template.html",
-    "href": "attendees/IanWeidling/code/template.html",
+    "objectID": "attendees/ElhamGhanbarian/code/template.html",
+    "href": "attendees/ElhamGhanbarian/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/IanWeidling/code/template.html#introduction-to-dplyr",
-    "href": "attendees/IanWeidling/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/ElhamGhanbarian/code/template.html#introduction-to-dplyr",
+    "href": "attendees/ElhamGhanbarian/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/IanWeidling/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/IanWeidling/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/ElhamGhanbarian/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/ElhamGhanbarian/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/KeithSmith/code/template.html",
-    "href": "attendees/KeithSmith/code/template.html",
+    "objectID": "attendees/YasamanRazavi/code/template.html",
+    "href": "attendees/YasamanRazavi/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/KeithSmith/code/template.html#introduction-to-dplyr",
-    "href": "attendees/KeithSmith/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/YasamanRazavi/code/template.html#introduction-to-dplyr",
+    "href": "attendees/YasamanRazavi/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/KeithSmith/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/KeithSmith/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/YasamanRazavi/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/YasamanRazavi/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/AbassBabatunde/code/template.html",
-    "href": "attendees/AbassBabatunde/code/template.html",
-    "title": "Practical Exercise Template",
-    "section": "",
-    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment.\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
-  },
-  {
-    "objectID": "attendees/AbassBabatunde/code/template.html#introduction-to-dplyr",
-    "href": "attendees/AbassBabatunde/code/template.html#introduction-to-dplyr",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to dplyr",
-    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
-  },
-  {
-    "objectID": "attendees/AbassBabatunde/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/AbassBabatunde/code/template.html#introduction-to-ggplot2",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to ggplot2",
-    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
-  },
-  {
-    "objectID": "attendees/KellieCollins/code/template.html",
-    "href": "attendees/KellieCollins/code/template.html",
+    "objectID": "attendees/ElyseVetter/code/template.html",
+    "href": "attendees/ElyseVetter/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/KellieCollins/code/template.html#introduction-to-dplyr",
-    "href": "attendees/KellieCollins/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
+    "href": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/KellieCollins/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/KellieCollins/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/DominicJavonillo/code/template.html",
-    "href": "attendees/DominicJavonillo/code/template.html",
+    "objectID": "attendees/ElyseVetter/about.html",
+    "href": "attendees/ElyseVetter/about.html",
+    "title": "Elyse Vetter",
+    "section": "",
+    "text": "The Whole Game Practice\n\n\nMy First Github Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElyse Vetter\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElyse Vetter\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/JackieAdedokun/about.html",
+    "href": "attendees/JackieAdedokun/about.html",
+    "title": "Jackie Adedokun",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJackie Adedokun\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/JohnHeap/about.html",
+    "href": "attendees/JohnHeap/about.html",
+    "title": "John Heap",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJohn Heap\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/template.html",
+    "href": "attendees/MorganBrucks/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/DominicJavonillo/code/template.html#introduction-to-dplyr",
-    "href": "attendees/DominicJavonillo/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
+    "href": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/DominicJavonillo/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/DominicJavonillo/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
-  },
-  {
-    "objectID": "attendees/BethanyForseth/code/template.html",
-    "href": "attendees/BethanyForseth/code/template.html",
-    "title": "Practical Exercise Template",
-    "section": "",
-    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
-  },
-  {
-    "objectID": "attendees/BethanyForseth/code/template.html#introduction-to-dplyr",
-    "href": "attendees/BethanyForseth/code/template.html#introduction-to-dplyr",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to dplyr",
-    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
-  },
-  {
-    "objectID": "attendees/BethanyForseth/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/BethanyForseth/code/template.html#introduction-to-ggplot2",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to ggplot2",
-    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
-  },
-  {
-    "objectID": "attendees/MelissaJenkins/code/whole-game.html",
-    "href": "attendees/MelissaJenkins/code/whole-game.html",
-    "title": "First Time Practicing Positron",
-    "section": "",
-    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n\n#Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
-  },
-  {
-    "objectID": "attendees/MelissaJenkins/about.html",
-    "href": "attendees/MelissaJenkins/about.html",
-    "title": "Melissa Jenkins",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMelissa Jenkins\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Time Practicing Positron\n\n\nLook I’m Doing It\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMelissa Jenkins\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/MelissaJenkins/code/template.html",
-    "href": "attendees/MelissaJenkins/code/template.html",
-    "title": "Practical Exercise Template",
-    "section": "",
-    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
-  },
-  {
-    "objectID": "attendees/MelissaJenkins/code/template.html#introduction-to-dplyr",
-    "href": "attendees/MelissaJenkins/code/template.html#introduction-to-dplyr",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to dplyr",
-    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
-  },
-  {
-    "objectID": "attendees/MelissaJenkins/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/MelissaJenkins/code/template.html#introduction-to-ggplot2",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to ggplot2",
-    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
-  },
-  {
-    "objectID": "attendees/BethanyForseth/about.html",
-    "href": "attendees/BethanyForseth/about.html",
-    "title": "Bethany Forseth",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nBethany Forseth\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/DominicJavonillo/about.html",
-    "href": "attendees/DominicJavonillo/about.html",
-    "title": "Dominic Javonillo",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDominic Javonillo\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/KellieCollins/about.html",
-    "href": "attendees/KellieCollins/about.html",
-    "title": "Kellie Collins",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nKellie Collins\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/AbassBabatunde/about.html",
-    "href": "attendees/AbassBabatunde/about.html",
-    "title": "Abass Babatunde",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nFist Github Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nAbass Babatunde, PhD\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/KeithSmith/about.html",
-    "href": "attendees/KeithSmith/about.html",
-    "title": "Keith Smith",
-    "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nKeith Smith\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/IanWeidling/about.html",
-    "href": "attendees/IanWeidling/about.html",
-    "title": "Ian Weidling",
-    "section": "",
-    "text": "Data Import Hands-on Practice\n\n\nFiles, databases, and web data\n\n\n\nData Import\n\nR4DS\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJul 15, 2026\n\n\nIan Weidling\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nIan Weidling\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "attendees/IanWeidling/code/data-import-practical-exercise.html",
@@ -931,235 +756,438 @@
     "text": "Check your understanding\n\nWhy does extracting all tables produce a list?\nWhy should you inspect the tables before choosing tables[[1]]?\nHow is scraping a webpage different from importing a stable CSV?\nWhen might an API be preferable to web scraping?"
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html",
-    "href": "attendees/MorganBrucks/code/template.html",
+    "objectID": "attendees/IanWeidling/about.html",
+    "href": "attendees/IanWeidling/about.html",
+    "title": "Ian Weidling",
+    "section": "",
+    "text": "Data Import Hands-on Practice\n\n\nFiles, databases, and web data\n\n\n\nData Import\n\nR4DS\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJul 15, 2026\n\n\nIan Weidling\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nIan Weidling\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/KeithSmith/about.html",
+    "href": "attendees/KeithSmith/about.html",
+    "title": "Keith Smith",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nKeith Smith\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/AbassBabatunde/about.html",
+    "href": "attendees/AbassBabatunde/about.html",
+    "title": "Abass Babatunde",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nFist Github Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nAbass Babatunde, PhD\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/KellieCollins/about.html",
+    "href": "attendees/KellieCollins/about.html",
+    "title": "Kellie Collins",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nKellie Collins\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/DominicJavonillo/about.html",
+    "href": "attendees/DominicJavonillo/about.html",
+    "title": "Dominic Javonillo",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDominic Javonillo\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/BethanyForseth/about.html",
+    "href": "attendees/BethanyForseth/about.html",
+    "title": "Bethany Forseth",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nBethany Forseth\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/MelissaJenkins/code/template.html",
+    "href": "attendees/MelissaJenkins/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
-    "href": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/MelissaJenkins/code/template.html#introduction-to-dplyr",
+    "href": "attendees/MelissaJenkins/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/MelissaJenkins/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/MelissaJenkins/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/JohnHeap/about.html",
-    "href": "attendees/JohnHeap/about.html",
-    "title": "John Heap",
+    "objectID": "attendees/MelissaJenkins/about.html",
+    "href": "attendees/MelissaJenkins/about.html",
+    "title": "Melissa Jenkins",
     "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJohn Heap\n\n\n\n\n\nNo matching items"
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMelissa Jenkins\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Time Practicing Positron\n\n\nLook I’m Doing It\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMelissa Jenkins\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "attendees/JackieAdedokun/about.html",
-    "href": "attendees/JackieAdedokun/about.html",
-    "title": "Jackie Adedokun",
+    "objectID": "attendees/MelissaJenkins/code/whole-game.html",
+    "href": "attendees/MelissaJenkins/code/whole-game.html",
+    "title": "First Time Practicing Positron",
     "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJackie Adedokun\n\n\n\n\n\nNo matching items"
+    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n\n#Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
   },
   {
-    "objectID": "attendees/ElyseVetter/about.html",
-    "href": "attendees/ElyseVetter/about.html",
-    "title": "Elyse Vetter",
-    "section": "",
-    "text": "The Whole Game Practice\n\n\nMy First Github Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElyse Vetter\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElyse Vetter\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "attendees/ElyseVetter/code/template.html",
-    "href": "attendees/ElyseVetter/code/template.html",
+    "objectID": "attendees/BethanyForseth/code/template.html",
+    "href": "attendees/BethanyForseth/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
-    "href": "attendees/ElyseVetter/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/BethanyForseth/code/template.html#introduction-to-dplyr",
+    "href": "attendees/BethanyForseth/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/ElyseVetter/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/BethanyForseth/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/BethanyForseth/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/YasamanRazavi/code/template.html",
-    "href": "attendees/YasamanRazavi/code/template.html",
+    "objectID": "attendees/DominicJavonillo/code/template.html",
+    "href": "attendees/DominicJavonillo/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/YasamanRazavi/code/template.html#introduction-to-dplyr",
-    "href": "attendees/YasamanRazavi/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/DominicJavonillo/code/template.html#introduction-to-dplyr",
+    "href": "attendees/DominicJavonillo/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/YasamanRazavi/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/YasamanRazavi/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/DominicJavonillo/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/DominicJavonillo/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/ElhamGhanbarian/code/template.html",
-    "href": "attendees/ElhamGhanbarian/code/template.html",
+    "objectID": "attendees/KellieCollins/code/template.html",
+    "href": "attendees/KellieCollins/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/ElhamGhanbarian/code/template.html#introduction-to-dplyr",
-    "href": "attendees/ElhamGhanbarian/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/KellieCollins/code/template.html#introduction-to-dplyr",
+    "href": "attendees/KellieCollins/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/ElhamGhanbarian/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/ElhamGhanbarian/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/KellieCollins/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/KellieCollins/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/WasayefBsharat/code/template.html",
-    "href": "attendees/WasayefBsharat/code/template.html",
+    "objectID": "attendees/AbassBabatunde/code/template.html",
+    "href": "attendees/AbassBabatunde/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment.\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+  },
+  {
+    "objectID": "attendees/AbassBabatunde/code/template.html#introduction-to-dplyr",
+    "href": "attendees/AbassBabatunde/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/AbassBabatunde/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/AbassBabatunde/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+  },
+  {
+    "objectID": "attendees/KeithSmith/code/template.html",
+    "href": "attendees/KeithSmith/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/WasayefBsharat/code/template.html#introduction-to-dplyr",
-    "href": "attendees/WasayefBsharat/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/KeithSmith/code/template.html#introduction-to-dplyr",
+    "href": "attendees/KeithSmith/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/WasayefBsharat/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/WasayefBsharat/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/KeithSmith/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/KeithSmith/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/RashelleHoffman/code/template.html",
-    "href": "attendees/RashelleHoffman/code/template.html",
+    "objectID": "attendees/IanWeidling/code/template.html",
+    "href": "attendees/IanWeidling/code/template.html",
     "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/RashelleHoffman/code/template.html#introduction-to-dplyr",
-    "href": "attendees/RashelleHoffman/code/template.html#introduction-to-dplyr",
+    "objectID": "attendees/IanWeidling/code/template.html#introduction-to-dplyr",
+    "href": "attendees/IanWeidling/code/template.html#introduction-to-dplyr",
     "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/RashelleHoffman/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/RashelleHoffman/code/template.html#introduction-to-ggplot2",
+    "objectID": "attendees/IanWeidling/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/IanWeidling/code/template.html#introduction-to-ggplot2",
     "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/DavidTitus/about.html",
-    "href": "attendees/DavidTitus/about.html",
-    "title": "David Titus",
+    "objectID": "attendees/MorganBrucks/about.html",
+    "href": "attendees/MorganBrucks/about.html",
+    "title": "Morgan Brucks",
     "section": "",
-    "text": "ggplot2 Hands-On Practice\n\n\n\n\n\n\n\n\n\n\n\nJul 8, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nTransform\n\n\nPractice using the dplyr functions with the nycflights13 data sets\n\n\n\n\n\n\n\n\nJul 1, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nTransform\n\n\nPractice using the dplyr functions with the nycflights13 data sets\n\n\n\n\n\n\n\n\nJul 1, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1: Basics in R\n\n\nPractice Reading and Manipulating Data\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDavid Titus\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 1: Basics in R\n\n\nPractice Reading and Manipulating Data\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nDavid Titus\n\n\n\n\n\nNo matching items"
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\n\n\n\n\n\n\n\nThe whole game practice\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "attendees/DavidTitus/code/template.html",
-    "href": "attendees/DavidTitus/code/template.html",
-    "title": "Week 1: Basics in R",
+    "objectID": "attendees/MorganBrucks/code/whole-game.html",
+    "href": "attendees/MorganBrucks/code/whole-game.html",
+    "title": "The whole game practice",
+    "section": "",
+    "text": "message(\"First time using the insert code chunk button!\")\n\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+  },
+  {
+    "objectID": "attendees/JohnHeap/code/template.html",
+    "href": "attendees/JohnHeap/code/template.html",
+    "title": "Practical Exercise Template",
     "section": "",
     "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
   },
   {
-    "objectID": "attendees/DavidTitus/code/template.html#introduction-to-dplyr",
-    "href": "attendees/DavidTitus/code/template.html#introduction-to-dplyr",
-    "title": "Week 1: Basics in R",
+    "objectID": "attendees/JohnHeap/code/template.html#introduction-to-dplyr",
+    "href": "attendees/JohnHeap/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
     "section": "Introduction to dplyr",
     "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
   },
   {
-    "objectID": "attendees/DavidTitus/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/DavidTitus/code/template.html#introduction-to-ggplot2",
-    "title": "Week 1: Basics in R",
+    "objectID": "attendees/JohnHeap/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/JohnHeap/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
     "section": "Introduction to ggplot2",
     "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html",
+    "objectID": "attendees/JackieAdedokun/code/template.html",
+    "href": "attendees/JackieAdedokun/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+  },
+  {
+    "objectID": "attendees/JackieAdedokun/code/template.html#introduction-to-dplyr",
+    "href": "attendees/JackieAdedokun/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/JackieAdedokun/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/JackieAdedokun/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+  },
+  {
+    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html",
+    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html",
+    "title": "The Whole Game Practice",
+    "section": "",
+    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+  },
+  {
+    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-dplyr",
+    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-dplyr",
+    "title": "The Whole Game Practice",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-ggplot2",
+    "href": "attendees/ElyseVetter/code/Week 1 Exercise.html#introduction-to-ggplot2",
+    "title": "The Whole Game Practice",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+  },
+  {
+    "objectID": "attendees/YasamanRazavi/about.html",
+    "href": "attendees/YasamanRazavi/about.html",
+    "title": "Yasaman Razavi",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nYasaman Razavi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/ElhamGhanbarian/about.html",
+    "href": "attendees/ElhamGhanbarian/about.html",
+    "title": "Elham Ghanbarian",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nElham Ghanbarian\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/WasayefBsharat/about.html",
+    "href": "attendees/WasayefBsharat/about.html",
+    "title": "Wasayef Bsharat",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nWasayef Bsharat\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/RashelleHoffman/about.html",
+    "href": "attendees/RashelleHoffman/about.html",
+    "title": "Rashelle Hoffman",
+    "section": "",
+    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nRashelle Hoffman\n\n\n\n\n\n\n\n\n\n\n\n\nThe Whole Game Practice\n\n\nMy First GitHub Push\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nRashelle Hoffman, PT, DPT, PhD\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/RashelleHoffman/code/whole-game.html",
+    "href": "attendees/RashelleHoffman/code/whole-game.html",
+    "title": "The Whole Game Practice",
+    "section": "",
+    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request.\n\n# Hello R-LAB\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html",
     "title": "Transform",
     "section": "",
     "text": "Assignment. Practice using the dplyr functions with the nycflights13 data sets. The data sets contained in the nycflights13 package include flights, weather, planes, airports, and airlines.\nTo access each of the data sets in the nycflights13 R package:\n#' If tidyverse is not installed:\n#install.packages(\"tidyverse\")\n#install.packages(\"nycflights13\")\n# Load the package containing all the flight data\nlibrary(nycflights13)\nTo access one of the data sets:\nnames (flights)\n\n [1] \"year\"           \"month\"          \"day\"            \"dep_time\"      \n [5] \"sched_dep_time\" \"dep_delay\"      \"arr_time\"       \"sched_arr_time\"\n [9] \"arr_delay\"      \"carrier\"        \"flight\"         \"tailnum\"       \n[13] \"origin\"         \"dest\"           \"air_time\"       \"distance\"      \n[17] \"hour\"           \"minute\"         \"time_hour\"\nTo view a description of the variables in a nycflights13 data set:\n?nycflights13::flights"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-air-time",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-air-time",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-air-time",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-air-time",
     "title": "Transform",
     "section": "Filtering by Air Time",
     "text": "Filtering by Air Time\nFilter the flights data set by air_time and assign the results to a data set named flights. Filter the data to retrieve flights that are ≥ 2 hours and &lt; 4 hours.\n\nlibrary(tidyverse)\n# Code here...\nflights&lt;- nycflights13::flights\n nrow(flights)\n\n[1] 336776\n\nflights &lt;- flights |&gt;\n  dplyr::filter(air_time &gt;= 120 & air_time &lt;240)\nflights\n\n# A tibble: 124,299 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            558        -4      740            728\n 6  2013     1     1      555            600        -5      913            854\n 7  2013     1     1      557            600        -3      838            846\n 8  2013     1     1      558            600        -2      753            745\n 9  2013     1     1      558            600        -2      849            851\n10  2013     1     1      558            600        -2      853            856\n# ℹ 124,289 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\nnrow(flights)\n\n[1] 124299"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#date-and-time-variable",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#date-and-time-variable",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#date-and-time-variable",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#date-and-time-variable",
     "title": "Transform",
     "section": "Date and Time Variable",
     "text": "Date and Time Variable\nUse the year, month, and day variable in the data set to create a date variable. Use this date variable to modify the dep_time and arr_time to create time stamps.\n\n# Code here...\nflights &lt;- flights |&gt;\n    dplyr::mutate(\n     date = lubridate::make_date(year, month, day),\n     dep_time = lubridate::make_datetime(year, month, day,  dep_time %/% 100, dep_time %% 100),\n     arr_time = lubridate::make_datetime(year, month, day, arr_time %/% 100, arr_time %% 100)\n\n  )\n\nflights\n\n# A tibble: 124,299 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:17:00            515         2\n 2  2013     1     1 2013-01-01 05:33:00            529         4\n 3  2013     1     1 2013-01-01 05:42:00            540         2\n 4  2013     1     1 2013-01-01 05:44:00            545        -1\n 5  2013     1     1 2013-01-01 05:54:00            558        -4\n 6  2013     1     1 2013-01-01 05:55:00            600        -5\n 7  2013     1     1 2013-01-01 05:57:00            600        -3\n 8  2013     1     1 2013-01-01 05:58:00            600        -2\n 9  2013     1     1 2013-01-01 05:58:00            600        -2\n10  2013     1     1 2013-01-01 05:58:00            600        -2\n# ℹ 124,289 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;\n\n\nHint: Look at the nycflights13::flights documentation to review the format of the dep_time and arr_time variables. Zero padding can be added with sprintf(\"%04d\", x) where x is the name of the variable."
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-flight-details",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#filtering-by-flight-details",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-flight-details",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#filtering-by-flight-details",
     "title": "Transform",
     "section": "Filtering by Flight Details",
     "text": "Filtering by Flight Details\nApply an additional filtering criteria that captures flights to the Orlando, Fort Lauderdale, and Miami airports from American Airlines, Delta Air Lines, and United Airlines.\n\n#nycflights13::airports|&gt;\n  #dplyr::filter(stringr::str_detect(name, \"Orlando\"))\n\n# Code here...\nflights &lt;- flights |&gt; \n dplyr::filter(carrier %in% c(\"AA\",  \"DL\",  \"UA\") & dest%in% c(\"MIA\",   \"FLL\" ,  \"MCO\"))\nnrow(flights)\n\n[1] 24355\n\ntable(flights$carrier)\n\n\n  AA   DL   UA \n8041 9281 7033 \n\nflights\n\n# A tibble: 24,355 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#factor-variables",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#factor-variables",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#factor-variables",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#factor-variables",
     "title": "Transform",
     "section": "Factor Variables",
     "text": "Factor Variables\nCreate a factor variable for carrier that includes American Airlines, Delta Air Lines, and United Airlines as the labels. Create another factor variable for dest that includes Orlando, Fort Lauderdale, and Miami.\n\n# Code here...\nflights &lt;- flights |&gt;\n\n  dplyr::mutate(\n\n    carrier = factor(carrier, levels = c(\"AA\", \"DL\", \"UA\"), labels = c(\"American Airlines\", \"Delta Air Lines\", \"United Airlines\")),\n\n    dest = factor(dest, levels = c(\"MIA\", \"FLL\", \"MCO\"), labels = c(\"Miami\", \"Fort Lauderdale\", \"Orlando\"))\n\n  )\n  flights\n\n# A tibble: 24,355 × 20\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 14 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#join-flights-with-weather",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#join-flights-with-weather",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#join-flights-with-weather",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#join-flights-with-weather",
     "title": "Transform",
     "section": "Join Flights with Weather",
     "text": "Join Flights with Weather\nJoin the temp and wind_speed variables from the weather data set to flights. You will need to select these variables first along with the 2 variables that you need as identifers to merge with the flights data set.\n\n## Code here\n#names(nycflights13::weather)\nweather_subset &lt;- nycflights13::weather |&gt;\n  dplyr::select(origin, time_hour, temp, wind_speed)\nweather_subset\n\n# A tibble: 26,115 × 4\n   origin time_hour            temp wind_speed\n   &lt;chr&gt;  &lt;dttm&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 EWR    2013-01-01 01:00:00  39.0      10.4 \n 2 EWR    2013-01-01 02:00:00  39.0       8.06\n 3 EWR    2013-01-01 03:00:00  39.0      11.5 \n 4 EWR    2013-01-01 04:00:00  39.9      12.7 \n 5 EWR    2013-01-01 05:00:00  39.0      12.7 \n 6 EWR    2013-01-01 06:00:00  37.9      11.5 \n 7 EWR    2013-01-01 07:00:00  39.0      15.0 \n 8 EWR    2013-01-01 08:00:00  39.9      10.4 \n 9 EWR    2013-01-01 09:00:00  39.9      15.0 \n10 EWR    2013-01-01 10:00:00  41        13.8 \n# ℹ 26,105 more rows\n\nflights &lt;- flights |&gt;\n  dplyr::left_join(weather_subset, by = c(\"origin\", \"time_hour\"))\nflights\n\n# A tibble: 24,355 × 22\n    year month   day dep_time            sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dttm&gt;                       &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1 2013-01-01 05:42:00            540         2\n 2  2013     1     1 2013-01-01 06:06:00            610        -4\n 3  2013     1     1 2013-01-01 06:07:00            607         0\n 4  2013     1     1 2013-01-01 06:23:00            610        13\n 5  2013     1     1 2013-01-01 06:44:00            636         8\n 6  2013     1     1 2013-01-01 06:55:00            700        -5\n 7  2013     1     1 2013-01-01 06:56:00            659        -3\n 8  2013     1     1 2013-01-01 06:57:00            700        -3\n 9  2013     1     1 2013-01-01 06:59:00            700        -1\n10  2013     1     1 2013-01-01 07:12:00            715        -3\n# ℹ 24,345 more rows\n# ℹ 16 more variables: arr_time &lt;dttm&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,\n#   carrier &lt;fct&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;fct&gt;,\n#   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;,\n#   date &lt;date&gt;, temp &lt;dbl&gt;, wind_speed &lt;dbl&gt;"
   },
   {
-    "objectID": "attendees/DavidTitus/code/week_2_exercise.html#run-a-summary-table",
-    "href": "attendees/DavidTitus/code/week_2_exercise.html#run-a-summary-table",
+    "objectID": "attendees/DavidTitus/code/Week_2_excersise.html#run-a-summary-table",
+    "href": "attendees/DavidTitus/code/Week_2_excersise.html#run-a-summary-table",
     "title": "Transform",
     "section": "Run a Summary Table",
     "text": "Run a Summary Table\nExecute the code below to view a table summarizing the destination, temperature, wind speed, time in the air, and distance by Airline carrier. The gtsummary package is excellent for building tables in R for presentations or manuscripts. Converting to a flextable allows more control over formatting for creating publication-ready tables.\n\n# Install the gtsummary package if not already installed\ninstall.packages(\"gtsummary\")\n\nflights |&gt;\n  dplyr::select(carrier, dest, temp, wind_speed, air_time, distance) |&gt;\n  gtsummary::tbl_summary(\n    by = carrier,\n    missing = \"no\",\n    statistic = gtsummary::all_continuous() ~ \"{mean} ± {sd}\",\n    type = distance ~ \"continuous\",\n    label = list(\n      dest ~ \"Destination\",\n      temp ~ \"Temperature\",\n      wind_speed ~ \"Wind Speed\",\n      air_time ~ \"Time in the Air\",\n      distance ~ \"Distance\"\n    )\n  ) |&gt;\n  gtsummary::as_flex_table()"
   },
   {
-    "objectID": "attendees/JulianneClina/about.html",
-    "href": "attendees/JulianneClina/about.html",
-    "title": "Julianne Clina",
+    "objectID": "attendees/DavidTitus/code/week_1_exercise.html",
+    "href": "attendees/DavidTitus/code/week_1_exercise.html",
+    "title": "Week 1: Basics in R",
     "section": "",
-    "text": "Julianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Import Hands-on Practice\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2026\n\n\nJulianne Clina\n\n\n\n\n\n\n\n\n\n\n\n\nggplot 2 Practice\n\n\nWeek 3\n\n\n\n\n\n\n\n\nJul 8, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\n\n\n\n\n\n\n\nWhole Game Practice\n\n\nWeek 1\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJulianne Clina, PhD\n\n\n\n\n\nNo matching items"
+    "text": "Assignment. Practice for Dr. Julianne Clina’s introduction to R presentation. This Quarto document will be used to practice my first GitHub pull request."
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/week_1_exercise.html#hello-r-lab",
+    "href": "attendees/DavidTitus/code/week_1_exercise.html#hello-r-lab",
+    "title": "Week 1: Basics in R",
+    "section": "Hello R-LAB",
+    "text": "Hello R-LAB\n\nlibrary(dplyr)\nmessage(\"My first GitHub push worked!\")\nx &lt;- 1:10\nmean(x)\n\n[1] 5.5"
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html",
+    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html",
+    "title": "ggplot2 Hands-On Practice",
+    "section": "",
+    "text": "Time to apply what we learned! Work through the activity that matches your experience level. If you finish early, try the bonus question or move on to the next level!"
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-1-fill-in-the-blanks",
+    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-1-fill-in-the-blanks",
+    "title": "ggplot2 Hands-On Practice",
+    "section": "Activity 1: Fill in the blanks",
+    "text": "Activity 1: Fill in the blanks\nGoal: Build a scatterplot of penguin bill length vs. bill depth, colored by species, using what you learned today.\nInstructions: Fill in the ___ blanks to complete the code. Run it and check that your plot displays correctly!\n\nggplot(\n  data = penguins,\n  mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = species)\n) +\n  geom_point() +\n  labs(\n    title = \"Bill length and bill depth by species\",\n    x = \"Bill length (mm)\",\n    y = \"Bill Depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(h = 0.5),\n    plot.subtitle = element_text(h = 0.5)\n  )\n\nHints:\n\nThe dataset you’ve been using all day goes in the first blank\nFind the variable name for bill depth\nUse the same geom as the scatterplots in the presentation\nAxis labels should be human-readable (e.g., “Bill depth (mm)”)\nRevist Manually modifying theme slides to center titles\n\nBonus: Can you also add shape = species inside aes() to make the plot accessible to colorblind viewers?"
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-2-update-the-facet-plots",
+    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-2-update-the-facet-plots",
+    "title": "ggplot2 Hands-On Practice",
+    "section": "Activity 2: Update the facet plots",
+    "text": "Activity 2: Update the facet plots\nGoal: Recreate and then enhance the faceted penguin plot from the presentation.\nInstructions: Start with the faceted plot from the slides, then make the following modifications:\n\nApply a theme — add a theme with the following specifications:\n\n\nPosition the title and subtitle to be right aligned\nSet the legend position to “bottom”\nRemove major and minor gridlines\nAdd axes lines that are colored blue\nSet your theme as a function before applying it to your figure.\n\n\nAdd color — map color = species inside so each species panel has a distinct color\nFix the legend position — the default legend.position = c(0.85, 0.2) may overlap the facets; adjust it to \"bottom\" instead Bonus: Try facet_grid(sex ~ species) instead of facet_wrap(~ species). What changes? What does this tell you that the original plot didn’t?\n\n\n# Facet plots from presentation - modify according to instructions above\nmytheme &lt;- ggplot2::theme_minimal() +\n  theme(\n    plot.title = element_text(hjust = 1, face = \"bold\"), # hor. adjust title to center\n    plot.subtitle = element_text(hjust = 1, face = \"bold\"), # hor. adjust subtitle to center\n    legend.position = \"bottom\", # x, y from bottom-left corner on scale 0-1\n    panel.grid.major = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.line = element_line(color = \"blue\")\n  )\n\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)\n) +\n  geom_point() +\n  facet_wrap(~species) +\n  labs(\n    title = \"Penguin body mass by flipper length\",\n    subtitle = \"Faceted by species\",\n    x = \"Flipper length (mm)\",\n    y = \"Body Mass (g)\",\n    color = \"species\"\n  ) +\n  mytheme"
+  },
+  {
+    "objectID": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-3-create-figure-using-new-dataset",
+    "href": "attendees/DavidTitus/code/Week_3_visualization_activities.html#activity-3-create-figure-using-new-dataset",
+    "title": "ggplot2 Hands-On Practice",
+    "section": "Activity 3: Create figure using new dataset",
+    "text": "Activity 3: Create figure using new dataset\nGoal: Use the mtcars dataset to independently apply everything from the presentation to answer a research question.\nBackground: mtcars is a built-in R dataset containing performance and design specs for 32 car models. Run ?mtcars to see the full variable list. Key variables:\n\n\n\nVariable\nDescription\n\n\n\n\nmpg\nMiles per gallon\n\n\nhp\nHorsepower\n\n\nwt\nWeight (1000 lbs)\n\n\ncyl\nNumber of cylinders (4, 6, or 8)\n\n\nam\nTransmission (0 = automatic, 1 = manual)\n\n\n\nResearch question: Does the relationship between horsepower and fuel efficiency differ by number of cylinders?\nYour task — build a complete, publication-ready figure that:\n\nPlots horsepower (x) vs. mpg (y) as a scatterplot\nAssigns colors and shapes points by number of cylinders — the variable is numeric, so you’ll need factor(cyl) inside aes() to treat it as a category\nAdds a line of best fit per cylinder group `\nFacets by transmission type — use labeller = labeller(am = c(\"0\" = \"Automatic\", \"1\" = \"Manual\")) inside facet_wrap() to replace 0/1 with readable labels\nApplies a clean custom theme\nHas polished axis labels, a title, and a subtitle\n\n\n# Your code here!\n\nBonus: Add se = TRUE back to geom_smooth() (it’s the default). What does the shaded ribbon represent, and when might it be useful in a scientific figure?"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/program_template.html",
+    "href": "attendees/JulianneClina/code/program_template.html",
+    "title": "Programming",
+    "section": "",
+    "text": "library(tibble)\nlibrary(dplyr)\nlibrary(purrr)\n\nsleep_study &lt;- tibble::tibble(\n  steps = rnorm(10, 8000, 1500),\n  sleep_hours = rnorm(10, 7, 1),\n  mood_score = rnorm(10, 50, 10),\n  memory_score = rnorm(10, 75, 8)\n)"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/program_template.html#tier-1-f_to_c",
+    "href": "attendees/JulianneClina/code/program_template.html#tier-1-f_to_c",
+    "title": "Programming",
+    "section": "Tier 1: f_to_c()",
+    "text": "Tier 1: f_to_c()\nFormula: C = (F - 32) * 5/9\nWrite a function called f_to_c() that converts a temperature in Fahrenheit to Celsius. Test it on 98.6 and 32.\n\nf_to_c &lt;- function(temp_f) {\n  \n}"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/program_template.html#tier-2-steps_to_miles",
+    "href": "attendees/JulianneClina/code/program_template.html#tier-2-steps_to_miles",
+    "title": "Programming",
+    "section": "Tier 2: steps_to_miles()",
+    "text": "Tier 2: steps_to_miles()\nFormula: miles = steps * 2.5 / 5280 (average stride length of 2.5 ft, 5,280 ft per mile)\nWrite a function called steps_to_miles() that converts a step count to miles, with a digits argument (defaulting to 1) that controls how many decimal places the result is rounded to. Test it on 8000 steps with the default rounding, and again with digits = 3.\n\nsteps_to_miles &lt;- function(steps, digits = ) {\n  \n}"
+  },
+  {
+    "objectID": "attendees/JulianneClina/code/program_template.html#tier-3-apply-steps_to_miles-with-purrrmap_dbl",
+    "href": "attendees/JulianneClina/code/program_template.html#tier-3-apply-steps_to_miles-with-purrrmap_dbl",
+    "title": "Programming",
+    "section": "Tier 3: Apply steps_to_miles() with purrr::map_dbl()",
+    "text": "Tier 3: Apply steps_to_miles() with purrr::map_dbl()\nUse purrr::map_dbl() to apply steps_to_miles() to the vector of daily steps below, both on its own and as a new column in a data frame.\n\ndaily_steps &lt;- c(4200, 6100, 8000, 9800, 11500)\n\n\nStretch goal: forwarding digits through map_dbl()\nAny extra arguments added after the function name in map_dbl() get forwarded to that function for every element – the same forwarding idea as ... from Chapter 25.\nRepeat the map_dbl() calls above, but this time pass digits = 3 through to steps_to_miles() for every element."
   },
   {
     "objectID": "attendees/JulianneClina/code/template.html",
