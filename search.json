@@ -623,25 +623,74 @@
     "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nJohn Heap\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html",
-    "href": "attendees/MorganBrucks/code/template.html",
-    "title": "Practical Exercise Template",
+    "objectID": "attendees/MorganBrucks/code/communication.html",
+    "href": "attendees/MorganBrucks/code/communication.html",
+    "title": "Communication",
     "section": "",
-    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+    "text": "Assignment. Create your own Quarto extension and practice what you have learned in the import, transform, visualize, and program chapters."
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
-    "href": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to dplyr",
-    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+    "objectID": "attendees/MorganBrucks/code/communication.html#create-your-own-quarto-extension",
+    "href": "attendees/MorganBrucks/code/communication.html#create-your-own-quarto-extension",
+    "title": "Communication",
+    "section": "Create Your Own Quarto Extension",
+    "text": "Create Your Own Quarto Extension\n\nNavigate to the code folder under your name in the 2026-RLAB-Practical-Exercises folder.\nCreate an _extensions folder and a rlab folder inside extensions.\nCreate an _extensions.yml and custom.css file inside the rlab folder.\nAdd the following yaml to _extensions.yml:\n\n---\ntitle: RLAB Quarto Format\nauthor: Morgan Brucks\ncontributes:\n  formats:\n    html: \n      title-block-banner: true\n      theme: lumen\n      css: custom.css\n      embed-resources: true\n      date-format: long\n      code-copy: false\n---\n\nAdd the format and extension to the yaml of the communication.qmd file.\n\n---\nformat:\n  rlab-html: default\n---\n\nCopy the css from this custom.css file into the custom.css file that you just created.\nOptional. Experiment with ths css styling in custom.css by changing the images, colors, font sizes, etc. to make it your own."
   },
   {
-    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
-    "href": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
-    "title": "Practical Exercise Template",
-    "section": "Introduction to ggplot2",
-    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
+    "objectID": "attendees/MorganBrucks/code/communication.html#data-science-review",
+    "href": "attendees/MorganBrucks/code/communication.html#data-science-review",
+    "title": "Communication",
+    "section": "Data Science Review",
+    "text": "Data Science Review\n\nImport Data\nIn this exercise, you will create an in-memory DuckDB database, copy the nycflights13 datasets into it, and use dplyr to create a new data frame for analysis.\nStep 1\nCreate an in-memory DuckDB database by:\n\nConnecting to DuckDB with DBI::dbConnect().\nUsing “:memory:” as the database location.\nCopying the nycflights13 datasets into the database with dbplyr::copy_nycflights13().\n\n\ncon &lt;- DBI::dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n\ndbplyr::copy_nycflights13(con)\n\nStep 2\nUsing the tables stored in DuckDB, create a new object named flights that:\n\nStarts with the weather table.\nSelects only the origin, time_hour, temp, and wind_speed columns.\nJoins the flights table using both origin and time_hour as the matching variables.\nCollects the resulting data into your R session using collect().\n\nAfter completing these steps, the flights object should contain the selected weather variables along with the matching flight information, ready for use in later exercises.\n\n# Code here..."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/communication.html#write-your-own-filter-function",
+    "href": "attendees/MorganBrucks/code/communication.html#write-your-own-filter-function",
+    "title": "Communication",
+    "section": "Write Your Own Filter Function",
+    "text": "Write Your Own Filter Function\nCreate a function named custom_filter() that filters a data frame based on a user-specified variable and value.\nYour function should have three arguments:\n\ndata: the data frame to filter.\nfilter_by: the variable to use for filtering.\nvalue: the value to compare against.\n\nInside the function:\n\nUse dplyr::filter() to keep observations where the selected variable is greater than or equal to value.\nUse embracing ({{ }}) so that filter_by accepts an unquoted column name.\n\nAfter writing your function, test it by creating a new object named filtered_flights that contains only rows where wind_speed is greater than or equal to 30 miles per hour.\nIf your function is written correctly, you should be able to call it by supplying a data frame, an unquoted variable name, and a comparison value.\n\n# Code here..."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/communication.html#write-your-own-visualization-function",
+    "href": "attendees/MorganBrucks/code/communication.html#write-your-own-visualization-function",
+    "title": "Communication",
+    "section": "Write Your Own Visualization Function",
+    "text": "Write Your Own Visualization Function\nIn this exercise, you will create a reusable function that produces a scatterplot using ggplot2. Your function should allow the user to choose the dataset, the variables to plot, and any optional arguments supported by ggplot2::geom_point().\nStep 1\nCreate a function named custom_visualization() with four arguments:\n\ndata: the data frame to plot.\nxvar: the variable to display on the x-axis.\nyvar: the variable to display on the y-axis.\n… additional arguments that will be passed directly to ggplot2::geom_point().\n\nStep 2\nBefore creating the plot, remove any rows where both the x and y variables are missing (NA).\n\nUse dplyr::filter().\nInside filter(), use dplyr::if_any().\nUse embracing ({{ }}) so that the function accepts unquoted variable names.\nThe condition should only keep rows that do not have an NA.\n\nHint: The expression inside if_any() should refer to the range from xvar to yvar, and the predicate should be is.na.\nStep 3\nPipe the filtered data into ggplot2::ggplot().\nUse ggplot2::aes() to map:\n\nx to xvar\ny to yvar\nRemember to use embracing ({{ }}) for both variables.\n\nStep 4\nAdd a scatterplot layer using ggplot2::geom_point().\nInstead of specifying arguments like color or size yourself, forward all optional arguments using .... This allows users to customize the points by passing any arguments accepted by geom_point(), such as: color, size, shape, fill, alpha, stroke, etc.\nStep 5\nTest your function using the filtered_flights data frame. Create a scatterplot of:\n\ntemp on the x-axis\nwind_speed on the y-axis\n\nCustomize the points by passing several optional arguments through …, for example:\ncolor = “blue” size = 4 shape = 21 stroke = 2 fill = “red”\nIf your function is written correctly, these arguments should be passed automatically to ggplot2::geom_point() without modifying the function itself.\n\n# Code here..."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/CommunicationSolutions.html",
+    "href": "attendees/MorganBrucks/code/CommunicationSolutions.html",
+    "title": "Communication",
+    "section": "",
+    "text": "Assignment. Create your own Quarto extension and practice what you have learned in the import, transform, visualize, and program chapters."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/CommunicationSolutions.html#create-your-own-quarto-extension",
+    "href": "attendees/MorganBrucks/code/CommunicationSolutions.html#create-your-own-quarto-extension",
+    "title": "Communication",
+    "section": "Create Your Own Quarto Extension",
+    "text": "Create Your Own Quarto Extension\n\nNavigate to the code folder under your name in the 2026-RLAB-Practical-Exercises folder.\nCreate an _extensions folder and a rlab folder inside extensions.\nCreate an _extensions.yml and custom.css file inside the rlab folder.\nAdd the following yaml to _extensions.yml:\n\n---\ntitle: RLAB Quarto Format\nauthor: Morgan Brucks\ncontributes:\n  formats:\n    html: \n      title-block-banner: true\n      theme: lumen\n      css: custom.css\n      embed-resources: true\n      date-format: long\n      code-copy: false\n---\n\nAdd the format and extension to the yaml of the communication.qmd file.\n\n---\nformat:\n  rlab-html: default\n---\n\nCopy the css from this custom.css file into the custom.css file that you just created.\nOptional. Experiment with ths css styling in custom.css by changing the images, colors, font sizes, etc. to make it your own."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/CommunicationSolutions.html#data-science-review",
+    "href": "attendees/MorganBrucks/code/CommunicationSolutions.html#data-science-review",
+    "title": "Communication",
+    "section": "Data Science Review",
+    "text": "Data Science Review\n\nImport Data\nIn this exercise, you will create an in-memory DuckDB database, copy the nycflights13 datasets into it, and use dplyr to create a new data frame for analysis.\nStep 1\nCreate an in-memory DuckDB database by:\n\nConnecting to DuckDB with DBI::dbConnect().\nUsing “:memory:” as the database location.\nCopying the nycflights13 datasets into the database with dbplyr::copy_nycflights13().\n\n\ncon &lt;- DBI::dbConnect(duckdb::duckdb(), dbdir = \":memory:\")\n\ndbplyr::copy_nycflights13(con)\n\nStep 2\nUsing the tables stored in DuckDB, create a new object named flights that:\n\nStarts with the weather table.\nSelects only the origin, time_hour, temp, and wind_speed columns.\nJoins the flights table using both origin and time_hour as the matching variables.\nCollects the resulting data into your R session using collect().\n\nAfter completing these steps, the flights object should contain the selected weather variables along with the matching flight information, ready for use in later exercises.\n\nflights &lt;- dplyr::tbl(con, \"weather\") |&gt;\n  dplyr::select(origin, time_hour, temp, wind_speed) |&gt;\n  dplyr::inner_join(\n    dplyr::tbl(con, \"flights\"),\n    by = c(\"origin\", \"time_hour\")\n  ) |&gt;\n  dplyr::collect()"
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/CommunicationSolutions.html#write-your-own-filter-function",
+    "href": "attendees/MorganBrucks/code/CommunicationSolutions.html#write-your-own-filter-function",
+    "title": "Communication",
+    "section": "Write Your Own Filter Function",
+    "text": "Write Your Own Filter Function\nCreate a function named custom_filter() that filters a data frame based on a user-specified variable and value.\nYour function should have three arguments:\n\ndata: the data frame to filter.\nfilter_by: the variable to use for filtering.\nvalue: the value to compare against.\n\nInside the function:\n\nUse dplyr::filter() to keep observations where the selected variable is greater than or equal to value.\nUse embracing ({{ }}) so that filter_by accepts an unquoted column name.\n\nAfter writing your function, test it by creating a new object named filtered_flights that contains only rows where wind_speed is greater than or equal to 30 miles per hour.\nIf your function is written correctly, you should be able to call it by supplying a data frame, an unquoted variable name, and a comparison value.\n\ncustom_filter &lt;- function(data, filter_by, value) {\n  data |&gt;\n    dplyr::filter({{ filter_by }} &gt;= value)\n}\n\nfiltered_flights &lt;- custom_filter(flights, wind_speed, 30)"
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/CommunicationSolutions.html#write-your-own-visualization-function",
+    "href": "attendees/MorganBrucks/code/CommunicationSolutions.html#write-your-own-visualization-function",
+    "title": "Communication",
+    "section": "Write Your Own Visualization Function",
+    "text": "Write Your Own Visualization Function\nIn this exercise, you will create a reusable function that produces a scatterplot using ggplot2. Your function should allow the user to choose the dataset, the variables to plot, and any optional arguments supported by ggplot2::geom_point().\nStep 1\nCreate a function named custom_visualization() with four arguments:\n\ndata: the data frame to plot.\nxvar: the variable to display on the x-axis.\nyvar: the variable to display on the y-axis.\n… additional arguments that will be passed directly to ggplot2::geom_point().\n\nStep 2\nBefore creating the plot, remove any rows where both the x and y variables are missing (NA).\n\nUse dplyr::filter().\nInside filter(), use dplyr::if_any().\nUse embracing ({{ }}) so that the function accepts unquoted variable names.\nThe condition should only keep rows that do not have an NA.\n\nHint: The expression inside if_any() should refer to the range from xvar to yvar, and the predicate should be is.na.\nStep 3\nPipe the filtered data into ggplot2::ggplot().\nUse ggplot2::aes() to map:\n\nx to xvar\ny to yvar\nRemember to use embracing ({{ }}) for both variables.\n\nStep 4\nAdd a scatterplot layer using ggplot2::geom_point().\nInstead of specifying arguments like color or size yourself, forward all optional arguments using .... This allows users to customize the points by passing any arguments accepted by geom_point(), such as: color, size, shape, fill, alpha, stroke, etc.\nStep 5\nTest your function using the filtered_flights data frame. Create a scatterplot of:\n\ntemp on the x-axis\nwind_speed on the y-axis\n\nCustomize the points by passing several optional arguments through …, for example:\ncolor = “blue” size = 4 shape = 21 stroke = 2 fill = “red”\nIf your function is written correctly, these arguments should be passed automatically to ggplot2::geom_point() without modifying the function itself.\n\ncustom_visualization &lt;- function(data, xvar, yvar, ...) {\n  data |&gt;\n    dplyr::filter(\n      !dplyr::if_any({{ xvar }}:{{ yvar }}, is.na)\n    ) |&gt;\n    ggplot2::ggplot(ggplot2::aes(x = {{ xvar }}, y = {{ yvar }})) +\n    ggplot2::geom_point(...)\n}\n\ncustom_visualization(\n  filtered_flights,\n  temp,\n  wind_speed,\n  color = \"blue\",\n  size = 4,\n  shape = 21,\n  stroke = 2,\n  fill = \"red\"\n)"
   },
   {
     "objectID": "attendees/IanWeidling/code/data-import-practical-exercise.html",
@@ -949,7 +998,28 @@
     "href": "attendees/MorganBrucks/about.html",
     "title": "Morgan Brucks",
     "section": "",
-    "text": "Practical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\n\n\n\n\n\n\n\nThe whole game practice\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\nNo matching items"
+    "text": "Communication\n\n\nCreating Quarto Extensions\n\n\n\n\n\n\n\n\nJul 29, 2026\n\n\nMorgan Brucks\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Exercise Template\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\n\n\n\n\n\n\n\nThe whole game practice\n\n\nAdjust the YAML each week when doing a new exercise\n\n\n\n\n\n\n\n\nJun 24, 2026\n\n\nMorgan Brucks\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/template.html",
+    "href": "attendees/MorganBrucks/code/template.html",
+    "title": "Practical Exercise Template",
+    "section": "",
+    "text": "Assignment. Add assignment details here. Update this section with the current week’s tasks or instructions, and any additional resources to complete the assignment."
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
+    "href": "attendees/MorganBrucks/code/template.html#introduction-to-dplyr",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to dplyr",
+    "text": "Introduction to dplyr\n\nlibrary(dplyr)\n\nstarwars |&gt;\n  mutate(bmi = mass / ((height / 100)^2)) |&gt;\n  select(name:mass, bmi)\n\n# A tibble: 87 × 4\n   name               height  mass   bmi\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77  26.0\n 2 C-3PO                 167    75  26.9\n 3 R2-D2                  96    32  34.7\n 4 Darth Vader           202   136  33.3\n 5 Leia Organa           150    49  21.8\n 6 Owen Lars             178   120  37.9\n 7 Beru Whitesun Lars    165    75  27.5\n 8 R5-D4                  97    32  34.0\n 9 Biggs Darklighter     183    84  25.1\n10 Obi-Wan Kenobi        182    77  23.2\n# ℹ 77 more rows"
+  },
+  {
+    "objectID": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
+    "href": "attendees/MorganBrucks/code/template.html#introduction-to-ggplot2",
+    "title": "Practical Exercise Template",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\nlibrary(ggplot2)\n\nggplot(mpg, aes(displ, hwy, colour = class)) +\n  geom_point()"
   },
   {
     "objectID": "attendees/MorganBrucks/code/whole-game.html",
