@@ -45,64 +45,14 @@
     ]
   },
   {
-    "listing": "/attendees/IanWeidling/about.html",
+    "listing": "/attendees/BrianHelsel/about.html",
     "items": [
-      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
-      "/attendees/IanWeidling/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/WasayefBsharat/about.html",
-    "items": [
-      "/attendees/WasayefBsharat/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KellieCollins/about.html",
-    "items": [
-      "/attendees/KellieCollins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SadafSalehi/about.html",
-    "items": [
-      "/attendees/SadafSalehi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SaraFortinMiller/about.html",
-    "items": [
-      "/attendees/SaraFortinMiller/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/DominicJavonillo/about.html",
-    "items": [
-      "/attendees/DominicJavonillo/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/YasamanRazavi/about.html",
-    "items": [
-      "/attendees/YasamanRazavi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/JohnHeap/about.html",
-    "items": [
-      "/attendees/JohnHeap/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AinsleyVanderGiesen/about.html",
-    "items": [
-      "/attendees/AinsleyVanderGiesen/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
-    "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
+      "/attendees/BrianHelsel/code/communication.html",
+      "/attendees/BrianHelsel/code/program.html",
+      "/attendees/BrianHelsel/code/import.html",
+      "/attendees/BrianHelsel/code/transform.html",
+      "/attendees/BrianHelsel/code/whole-game.html",
+      "/attendees/BrianHelsel/code/template.html"
     ]
   },
   {
@@ -113,13 +63,64 @@
     ]
   },
   {
-    "listing": "/attendees/BrianHelsel/about.html",
+    "listing": "/attendees/ElhamGhanbarian/about.html",
     "items": [
-      "/attendees/BrianHelsel/code/program.html",
-      "/attendees/BrianHelsel/code/import.html",
-      "/attendees/BrianHelsel/code/transform.html",
-      "/attendees/BrianHelsel/code/whole-game.html",
-      "/attendees/BrianHelsel/code/template.html"
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/AinsleyVanderGiesen/about.html",
+    "items": [
+      "/attendees/AinsleyVanderGiesen/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JohnHeap/about.html",
+    "items": [
+      "/attendees/JohnHeap/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/YasamanRazavi/about.html",
+    "items": [
+      "/attendees/YasamanRazavi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/DominicJavonillo/about.html",
+    "items": [
+      "/attendees/DominicJavonillo/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SaraFortinMiller/about.html",
+    "items": [
+      "/attendees/SaraFortinMiller/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SadafSalehi/about.html",
+    "items": [
+      "/attendees/SadafSalehi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/KellieCollins/about.html",
+    "items": [
+      "/attendees/KellieCollins/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/WasayefBsharat/about.html",
+    "items": [
+      "/attendees/WasayefBsharat/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/IanWeidling/about.html",
+    "items": [
+      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
+      "/attendees/IanWeidling/code/template.html"
     ]
   },
   {
