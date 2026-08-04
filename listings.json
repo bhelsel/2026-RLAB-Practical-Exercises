@@ -7,41 +7,97 @@
     ]
   },
   {
-    "listing": "/attendees/JulianneClina/about.html",
+    "listing": "/attendees/RashelleHoffman/about.html",
     "items": [
-      "/attendees/JulianneClina/code/program_solutions.html",
-      "/attendees/JulianneClina/code/program_template.html",
-      "/attendees/JulianneClina/code/data_import.html",
-      "/attendees/JulianneClina/code/ggplot2.html",
-      "/attendees/JulianneClina/code/whole-game.html",
-      "/attendees/JulianneClina/code/template.html"
+      "/attendees/RashelleHoffman/code/whole-game.html",
+      "/attendees/RashelleHoffman/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/AshlynBarry/about.html",
+    "listing": "/attendees/KeithSmith/about.html",
     "items": [
-      "/attendees/AshlynBarry/code/visualization_activities.html",
-      "/attendees/AshlynBarry/code/visualization_activities_solution.html",
-      "/attendees/AshlynBarry/code/template.html"
+      "/attendees/KeithSmith/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/RachelHantman/about.html",
+    "listing": "/attendees/KameronSuire/about.html",
     "items": [
-      "/attendees/RachelHantman/code/template.html"
+      "/attendees/KameronSuire/code/whole-game.html",
+      "/attendees/KameronSuire/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/SullafaKadura/about.html",
+    "listing": "/attendees/AbassBabatunde/about.html",
     "items": [
-      "/attendees/SullafaKadura/code/template.html"
+      "/attendees/AbassBabatunde/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/MelissaJenkins/about.html",
+    "listing": "/attendees/IanWeidling/about.html",
     "items": [
-      "/attendees/MelissaJenkins/code/whole-game.html",
-      "/attendees/MelissaJenkins/code/template.html"
+      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
+      "/attendees/IanWeidling/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/WasayefBsharat/about.html",
+    "items": [
+      "/attendees/WasayefBsharat/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/KellieCollins/about.html",
+    "items": [
+      "/attendees/KellieCollins/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SadafSalehi/about.html",
+    "items": [
+      "/attendees/SadafSalehi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/SaraFortinMiller/about.html",
+    "items": [
+      "/attendees/SaraFortinMiller/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/DominicJavonillo/about.html",
+    "items": [
+      "/attendees/DominicJavonillo/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/YasamanRazavi/about.html",
+    "items": [
+      "/attendees/YasamanRazavi/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JohnHeap/about.html",
+    "items": [
+      "/attendees/JohnHeap/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/AinsleyVanderGiesen/about.html",
+    "items": [
+      "/attendees/AinsleyVanderGiesen/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "items": [
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/MasonMcClarnon/about.html",
+    "items": [
+      "/attendees/MasonMcClarnon/code/whole-game.html",
+      "/attendees/MasonMcClarnon/code/template.html"
     ]
   },
   {
@@ -56,97 +112,42 @@
     ]
   },
   {
-    "listing": "/attendees/MasonMcClarnon/about.html",
+    "listing": "/attendees/MelissaJenkins/about.html",
     "items": [
-      "/attendees/MasonMcClarnon/code/whole-game.html",
-      "/attendees/MasonMcClarnon/code/template.html"
+      "/attendees/MelissaJenkins/code/whole-game.html",
+      "/attendees/MelissaJenkins/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "listing": "/attendees/SullafaKadura/about.html",
     "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
+      "/attendees/SullafaKadura/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/AinsleyVanderGiesen/about.html",
+    "listing": "/attendees/RachelHantman/about.html",
     "items": [
-      "/attendees/AinsleyVanderGiesen/code/template.html"
+      "/attendees/RachelHantman/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/JohnHeap/about.html",
+    "listing": "/attendees/AshlynBarry/about.html",
     "items": [
-      "/attendees/JohnHeap/code/template.html"
+      "/attendees/AshlynBarry/code/visualization_activities.html",
+      "/attendees/AshlynBarry/code/visualization_activities_solution.html",
+      "/attendees/AshlynBarry/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/YasamanRazavi/about.html",
+    "listing": "/attendees/JulianneClina/about.html",
     "items": [
-      "/attendees/YasamanRazavi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/DominicJavonillo/about.html",
-    "items": [
-      "/attendees/DominicJavonillo/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SaraFortinMiller/about.html",
-    "items": [
-      "/attendees/SaraFortinMiller/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/SadafSalehi/about.html",
-    "items": [
-      "/attendees/SadafSalehi/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KellieCollins/about.html",
-    "items": [
-      "/attendees/KellieCollins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/WasayefBsharat/about.html",
-    "items": [
-      "/attendees/WasayefBsharat/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/IanWeidling/about.html",
-    "items": [
-      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
-      "/attendees/IanWeidling/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AbassBabatunde/about.html",
-    "items": [
-      "/attendees/AbassBabatunde/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KameronSuire/about.html",
-    "items": [
-      "/attendees/KameronSuire/code/whole-game.html",
-      "/attendees/KameronSuire/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KeithSmith/about.html",
-    "items": [
-      "/attendees/KeithSmith/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/RashelleHoffman/about.html",
-    "items": [
-      "/attendees/RashelleHoffman/code/whole-game.html",
-      "/attendees/RashelleHoffman/code/template.html"
+      "/attendees/JulianneClina/code/communication.html",
+      "/attendees/JulianneClina/code/program_solutions.html",
+      "/attendees/JulianneClina/code/program_template.html",
+      "/attendees/JulianneClina/code/data_import.html",
+      "/attendees/JulianneClina/code/ggplot2.html",
+      "/attendees/JulianneClina/code/whole-game.html",
+      "/attendees/JulianneClina/code/template.html"
     ]
   },
   {
