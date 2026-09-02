@@ -1,0 +1,330 @@
+---
+title: "Control Flow"
+author: "Brian C. Helsel"
+institute: "University of Kansas Medical Center"
+date: 2026-09-02
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-block-bg: true
+    theme: cosmo
+execute:
+  echo: true
+  eval: false
+---
+
+## Learning Objectives
+
+By the end of this workshop, you should be able to:
+
+- Write `if` / `else if` / `else` statements to classify a single value
+- Use `switch()` to map a coded value to a label
+- Write a `for` loop to repeat an action across multiple patients
+- Use `next` to skip an iteration when data are missing
+
+The core question to ask yourself throughout: **what decision am I making, and for how many things at once?** (`if` = one decision, one value at a time. `for` = repeat that decision across many values.)
+
+```{r}
+## Creating example dataset for practice!
+library(tidyverse)
+
+patients <- tibble(
+  id = sprintf("P%02d", 1:12),
+  age = c(34, 58, 45, 62, 29, 51, 47, 39, 66, 55, 42, 60),
+  sbp = c(118, 142, 135, 128, 122, 158, NA, 131, 145, 126, 138, 165),
+  activity_code = c(
+    "A",
+    "C",
+    "B",
+    "A",
+    "D",
+    "B",
+    "C",
+    "A",
+    "B",
+    "D",
+    "C",
+    "A"
+  ),
+  steps = c(
+    8200,
+    3100,
+    5400,
+    9100,
+    11200,
+    4800,
+    6200,
+    8900,
+    5100,
+    12400,
+    4300,
+    6700
+  )
+)
+
+patients
+```
+
+`activity_code` is a stand-in for how activity level was recorded in the field: `"A"` = sedentary, `"B"` = lightly active, `"C"` = moderately active, `"D"` = very active.
+
+---
+
+## Activity 1: `if` / `else if` / `else`
+
+### Why control flow?
+
+Subsetting (last workshop) answers *"which rows meet a condition?"* Control flow answers a different question: *"given one value, which branch of logic should run?"* This matters when the action you want to take is more complex than just keeping or dropping a row. e.g., assigning a category, printing a message, or triggering different calculations.
+
+The basic shape:
+
+```{r}
+# if (condition) {
+# runs if condition is TRUE
+#} else if (other_condition) {
+# runs if condition is FALSE and other_condition is TRUE
+#} else {
+# runs if nothing above was TRUE
+#}
+```
+
+A few things worth knowing:
+
+- `if` expects a **single** `TRUE`/`FALSE` — not a vector. Feeding it a vector of length > 1 will error (or has in recent R versions).
+- `if`/`else` returns a value, so you can assign the result directly: `x <- if (a) 1 else 2`.
+- This is different from `ifelse()`, which *is* vectorized and works element-by-element over a whole vector — useful later, but not what we're practicing here.
+
+### Step 1: Classify one patient's blood pressure
+
+Standard categories (simplified for this exercise):
+
+- `sbp < 120`: "Normal"
+- `sbp >= 120 & sbp < 130`: "Elevated"
+- `sbp >= 130 & sbp < 140`: "High Stage 1"
+- `sbp >= 140`: "High Stage 2"
+
+```{r}
+# Using patients$sbp[2], write an if / else if / else chain that prints the correct category
+
+x <- patients$sbp[2]
+
+if (x < 120) {
+  print("Normal")
+} else if (x >= 120 & x < 130) {
+  print("Elevated")
+} else if (x >= 130 & x < 140) {
+  print("High Stage 1")
+} else {
+  print("High Stage 2")
+}
+```
+
+### Step 2: Handle missing data
+
+Patient 7 has a missing `sbp` value. Right now, running your code from Step 1 on `patients$sbp[7]` will likely throw an error or behave oddly, because `if` can't evaluate `NA` as TRUE/FALSE.
+
+```{r}
+# Add a check at the top of your if/else chain: if the value is NA,
+# print "Missing" instead of evaluating the BP conditions
+
+x <- patients$sbp[7]
+
+if (is.na(x)) {
+  print("Missing")
+} else if (x < 120) {
+  print("Normal")
+} else if (x >= 120 & x < 130) {
+  print("Elevated")
+} else if (x >= 130 & x < 140) {
+  print("High Stage 1")
+} else {
+  print("High Stage 2")
+}
+```
+
+**Why this matters for real data:** any time you write `if` around a variable that might have missing values, you need to decide up front what should happen for `NA` — R won't decide for you (it will error).
+
+---
+
+## Activity 2: `switch()`
+
+`switch()` is a cleaner way to write an `if`/`else if` chain when you're matching one variable against a fixed set of known values, like a code.
+
+```{r}
+switch(
+  "B",
+  A = "Sedentary",
+  B = "Lightly active",
+  C = "Moderately active",
+  D = "Very active"
+)
+```
+
+Compare this to what the equivalent `if`/`else if` chain would look like `switch()` says the same thing with a lot less repetition.
+
+### Step 1: Translate one code
+
+```{r}
+# Use switch() to translate patients$activity_code[5] into its
+# full label
+
+switch(
+  patients$activity_code[5],
+  A = "Sedentary",
+  B = "Lightly active",
+  C = "Moderately active",
+  D = "Very active"
+)
+```
+
+### Step 2: Add a fallback
+
+`switch()` can take an unnamed final argument as a default, for values that don't match anything listed:
+
+```{r}
+switch(
+  "Z",
+  A = "Sedentary",
+  B = "Lightly active",
+  "Unknown code"
+)
+```
+
+```{r}
+# Test your switch() from Step 1 on the value "Z" (a code that doesn't exist in our data) — add a default so it doesn't error
+
+switch(
+  "Z",
+  A = "Sedentary",
+  B = "Lightly active",
+  C = "Moderately active",
+  D = "Very active",
+  "Unknown code"
+)
+```
+
+---
+
+## Activity 3: `for` loops
+
+A `for` loop repeats the same block of code once per element of a sequence — useful when you want to apply an `if`/`else` decision (Activity 1) or a `switch()` (Activity 2) to *every* patient, not just one.
+
+```{r}
+for (i in 1:5) {
+  print(i)
+}
+```
+
+`i` is just a variable name — it takes on each value in `1:5` in turn, and the code inside `{}` runs once per value.
+
+### Step 1: Loop through and classify every patient's BP
+
+Combine what you built in Activity 1 with a `for` loop: loop over all 12 patients, and print each patient's `id` alongside their BP category. Don't forget to handle `NA` (patient 7).
+
+```{r}
+# for (i in 1:nrow(patients)) {
+#   ... your if/else chain from Activity 1, using patients$sbp[i] ...
+#   ... print(paste(patients$id[i], "-", category)) ...
+# }
+
+for (i in 1:nrow(patients)) {
+  id <- patients$id[[i]]
+  bp <- patients$sbp[[i]]
+
+  if (is.na(bp)) {
+    cat <- "Missing"
+  } else if (bp < 120) {
+    cat <- "Normal"
+  } else if (bp >= 120 & bp < 130) {
+    cat <- "Elevated"
+  } else if (bp >= 130 & bp < 140) {
+    cat <- "High Stage 1"
+  } else {
+    cat <- "High Stage 2"
+  }
+
+  msg <- sprintf("%s: %s is %s", id, bp, cat)
+  print(msg)
+}
+```
+
+### Step 2: Skip missing values with `next`
+
+Instead of printing "Missing" for patient 7, use `next` to skip that iteration entirely — the loop moves on to the next patient without printing anything for the skipped one.
+
+```{r}
+# Copy your loop from Step 1, but replace the "Missing" branch
+# with: next
+
+for (i in 1:nrow(patients)) {
+  id <- patients$id[[i]]
+  bp <- patients$sbp[[i]]
+
+  if (is.na(bp)) {
+    next
+  }
+
+  if (bp < 120) {
+    cat <- "Normal"
+  } else if (bp >= 120 & bp < 130) {
+    cat <- "Elevated"
+  } else if (bp >= 130 & bp < 140) {
+    cat <- "High Stage 1"
+  } else {
+    cat <- "High Stage 2"
+  }
+
+  msg <- sprintf("%s: %s is %s", id, bp, cat)
+  print(msg)
+}
+```
+
+### Step 3: Build a vector of results
+
+Printing is fine for checking your work, but usually you want to **save** the result. Pre-allocate an empty character vector, then fill it in as the loop runs.
+
+```{r}
+# bp_category <- vector("character", nrow(patients))
+#
+# for (i in 1:nrow(patients)) {
+#   ... same if/else logic as before ...
+#   bp_category[i] <- category   # or NA if missing
+# }
+#
+# patients$bp_category <- bp_category
+# patients
+
+categories <- vector("character", nrow(patients))
+
+for (i in 1:nrow(patients)) {
+  id <- patients$id[[i]]
+  bp <- patients$sbp[[i]]
+
+  if (is.na(bp)) {
+    next
+  }
+
+  if (bp < 120) {
+    cat <- "Normal"
+  } else if (bp >= 120 & bp < 130) {
+    cat <- "Elevated"
+  } else if (bp >= 130 & bp < 140) {
+    cat <- "High Stage 1"
+  } else {
+    cat <- "High Stage 2"
+  }
+
+  msg <- sprintf("%s: %s is %s", id, bp, cat)
+  print(msg)
+}
+```
+
+---
+
+## Key Takeaways
+
+1. **`if`/`else`** makes a decision for a *single* value — it can't take a vector.
+2. **`switch()`** is a shortcut for matching one variable against a known list of codes, with an optional default.
+3. **`for` loops** repeat a block of code once per element — this is how you scale a one-value decision (`if`/`switch`) up to a whole dataset.
+4. **`next`** skips the rest of the current iteration and moves on — handy for skipping missing or bad data inside a loop.
+5. Always ask: is this a single value (`if`/`switch`) or a whole vector/column at once (loop, or later: `ifelse()`/`purrr::map()`)?
