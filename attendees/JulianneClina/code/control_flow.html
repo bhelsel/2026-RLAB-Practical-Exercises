@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Julianne G. Clina">
-<meta name="dcterms.date" content="2026-07-23">
+<meta name="dcterms.date" content="2026-09-02">
 
-<title>Programming Solutions – 2026 RLAB Practical Exercises</title>
+<title>Control Flow – 2026 RLAB Practical Exercises</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -156,9 +156,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#tier-1-f_to_c" id="toc-tier-1-f_to_c" class="nav-link active" data-scroll-target="#tier-1-f_to_c">Tier 1: <code>f_to_c()</code></a></li>
-  <li><a href="#tier-2-steps_to_miles" id="toc-tier-2-steps_to_miles" class="nav-link" data-scroll-target="#tier-2-steps_to_miles">Tier 2: <code>steps_to_miles()</code></a></li>
-  <li><a href="#tier-3-apply-steps_to_miles-with-purrrmap_dbl" id="toc-tier-3-apply-steps_to_miles-with-purrrmap_dbl" class="nav-link" data-scroll-target="#tier-3-apply-steps_to_miles-with-purrrmap_dbl">Tier 3: Apply <code>steps_to_miles()</code> with <code>purrr::map_dbl()</code></a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#activity-1-if-else-if-else" id="toc-activity-1-if-else-if-else" class="nav-link" data-scroll-target="#activity-1-if-else-if-else">Activity 1: <code>if</code> / <code>else if</code> / <code>else</code></a></li>
+  <li><a href="#activity-2-switch" id="toc-activity-2-switch" class="nav-link" data-scroll-target="#activity-2-switch">Activity 2: <code>switch()</code></a></li>
+  <li><a href="#activity-3-for-loops" id="toc-activity-3-for-loops" class="nav-link" data-scroll-target="#activity-3-for-loops">Activity 3: <code>for</code> loops</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Programming Solutions</h1>
+<h1 class="title">Control Flow</h1>
 </div>
 
 
@@ -191,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 23, 2026</p>
+      <p class="date">September 2, 2026</p>
     </div>
   </div>
   
@@ -203,72 +205,197 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this workshop, you should be able to:</p>
+<ul>
+<li>Write <code>if</code> / <code>else if</code> / <code>else</code> statements to classify a single value</li>
+<li>Use <code>switch()</code> to map a coded value to a label</li>
+<li>Write a <code>for</code> loop to repeat an action across multiple patients</li>
+<li>Use <code>next</code> to skip an iteration when data are missing</li>
+</ul>
+<p>The core question to ask yourself throughout: <strong>what decision am I making, and for how many things at once?</strong> (<code>if</code> = one decision, one value at a time. <code>for</code> = repeat that decision across many values.)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sleep_study <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">steps =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">8000</span>, <span class="dv">1500</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sleep_hours =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">1</span>),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mood_score =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">10</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">memory_score =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">75</span>, <span class="dv">8</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating example dataset for practice!</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>patients <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">sprintf</span>(<span class="st">"P%02d"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">58</span>, <span class="dv">45</span>, <span class="dv">62</span>, <span class="dv">29</span>, <span class="dv">51</span>, <span class="dv">47</span>, <span class="dv">39</span>, <span class="dv">66</span>, <span class="dv">55</span>, <span class="dv">42</span>, <span class="dv">60</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sbp =</span> <span class="fu">c</span>(<span class="dv">118</span>, <span class="dv">142</span>, <span class="dv">135</span>, <span class="dv">128</span>, <span class="dv">122</span>, <span class="dv">158</span>, <span class="cn">NA</span>, <span class="dv">131</span>, <span class="dv">145</span>, <span class="dv">126</span>, <span class="dv">138</span>, <span class="dv">165</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_code =</span> <span class="fu">c</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A"</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">steps =</span> <span class="fu">c</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8200</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3100</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5400</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="dv">9100</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="dv">11200</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4800</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6200</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8900</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5100</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="dv">12400</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4300</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6700</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>patients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="tier-1-f_to_c" class="level2">
-<h2 class="anchored" data-anchor-id="tier-1-f_to_c">Tier 1: <code>f_to_c()</code></h2>
-<p><strong>Formula:</strong> <code>C = (F - 32) * 5/9</code></p>
-<p>Write a function called <code>f_to_c()</code> that converts a temperature in Fahrenheit to Celsius. Test it on <code>98.6</code> and <code>32</code>.</p>
+<p><code>activity_code</code> is a stand-in for how activity level was recorded in the field: <code>"A"</code> = sedentary, <code>"B"</code> = lightly active, <code>"C"</code> = moderately active, <code>"D"</code> = very active.</p>
+<hr>
+</section>
+<section id="activity-1-if-else-if-else" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-if-else-if-else">Activity 1: <code>if</code> / <code>else if</code> / <code>else</code></h2>
+<section id="why-control-flow" class="level3">
+<h3 class="anchored" data-anchor-id="why-control-flow">Why control flow?</h3>
+<p>Subsetting (last workshop) answers <em>“which rows meet a condition?”</em> Control flow answers a different question: <em>“given one value, which branch of logic should run?”</em> This matters when the action you want to take is more complex than just keeping or dropping a row. e.g., assigning a category, printing a message, or triggering different calculations.</p>
+<p>The basic shape:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f_to_c <span class="ot">&lt;-</span> <span class="cf">function</span>(temp_f) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (temp_f <span class="sc">-</span> <span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">f_to_c</span>(<span class="fl">98.6</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f_to_c</span>(<span class="dv">32</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">f_to_c</span>(<span class="dv">106</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if (condition) {</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># runs if condition is TRUE</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#} else if (other_condition) {</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># runs if condition is FALSE and other_condition is TRUE</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#} else {</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># runs if nothing above was TRUE</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A few things worth knowing:</p>
+<ul>
+<li><code>if</code> expects a <strong>single</strong> <code>TRUE</code>/<code>FALSE</code> — not a vector. Feeding it a vector of length &gt; 1 will error (or has in recent R versions).</li>
+<li><code>if</code>/<code>else</code> returns a value, so you can assign the result directly: <code>x &lt;- if (a) 1 else 2</code>.</li>
+<li>This is different from <code>ifelse()</code>, which <em>is</em> vectorized and works element-by-element over a whole vector — useful later, but not what we’re practicing here.</li>
+</ul>
+</section>
+<section id="step-1-classify-one-patients-blood-pressure" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-classify-one-patients-blood-pressure">Step 1: Classify one patient’s blood pressure</h3>
+<p>Standard categories (simplified for this exercise):</p>
+<ul>
+<li><code>sbp &lt; 120</code>: “Normal”</li>
+<li><code>sbp &gt;= 120 &amp; sbp &lt; 130</code>: “Elevated”</li>
+<li><code>sbp &gt;= 130 &amp; sbp &lt; 140</code>: “High Stage 1”</li>
+<li><code>sbp &gt;= 140</code>: “High Stage 2”</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using patients$sbp[2], write an if / else if / else chain that prints the correct category</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-handle-missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-handle-missing-data">Step 2: Handle missing data</h3>
+<p>Patient 7 has a missing <code>sbp</code> value. Right now, running your code from Step 1 on <code>patients$sbp[7]</code> will likely throw an error or behave oddly, because <code>if</code> can’t evaluate <code>NA</code> as TRUE/FALSE.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a check at the top of your if/else chain: if the value is NA,</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print "Missing" instead of evaluating the BP conditions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Why this matters for real data:</strong> any time you write <code>if</code> around a variable that might have missing values, you need to decide up front what should happen for <code>NA</code> — R won’t decide for you (it will error).</p>
+<hr>
+</section>
+</section>
+<section id="activity-2-switch" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2-switch">Activity 2: <code>switch()</code></h2>
+<p><code>switch()</code> is a cleaner way to write an <code>if</code>/<code>else if</code> chain when you’re matching one variable against a fixed set of known values, like a code.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"B"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="st">"Sedentary"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="st">"Lightly active"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">C =</span> <span class="st">"Moderately active"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">D =</span> <span class="st">"Very active"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Compare this to what the equivalent <code>if</code>/<code>else if</code> chain would look like <code>switch()</code> says the same thing with a lot less repetition.</p>
+<section id="step-1-translate-one-code" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-translate-one-code">Step 1: Translate one code</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use switch() to translate patients$activity_code[5] into its</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># full label</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-add-a-fallback" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-add-a-fallback">Step 2: Add a fallback</h3>
+<p><code>switch()</code> can take an unnamed final argument as a default, for values that don’t match anything listed:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Z"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="st">"Sedentary"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="st">"Lightly active"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unknown code"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test your switch() from Step 1 on the value "Z" (a code that doesn't exist in our data) — add a default so it doesn't error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 </section>
-<section id="tier-2-steps_to_miles" class="level2">
-<h2 class="anchored" data-anchor-id="tier-2-steps_to_miles">Tier 2: <code>steps_to_miles()</code></h2>
-<p><strong>Formula:</strong> <code>miles = steps * 2.5 / 5280</code> (average stride length of 2.5 ft, 5,280 ft per mile)</p>
-<p>Write a function called <code>steps_to_miles()</code> that converts a step count to miles, with a <code>digits</code> argument (defaulting to 1) that controls how many decimal places the result is rounded to. Test it on <code>8000</code> steps with the default rounding, and again with <code>digits = 3</code>.</p>
+</section>
+<section id="activity-3-for-loops" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-for-loops">Activity 3: <code>for</code> loops</h2>
+<p>A <code>for</code> loop repeats the same block of code once per element of a sequence — useful when you want to apply an <code>if</code>/<code>else</code> decision (Activity 1) or a <code>switch()</code> (Activity 2) to <em>every</em> patient, not just one.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>steps_to_miles <span class="ot">&lt;-</span> <span class="cf">function</span>(steps, <span class="at">digits =</span> <span class="dv">1</span>) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  miles <span class="ot">&lt;-</span> steps <span class="sc">*</span> <span class="fl">2.5</span> <span class="sc">/</span> <span class="dv">5280</span>   <span class="co"># step 1: convert to miles</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(miles, digits)          <span class="co"># step 2: round</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">steps_to_miles</span>(<span class="dv">8000</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">steps_to_miles</span>(<span class="dv">8000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>i</code> is just a variable name — it takes on each value in <code>1:5</code> in turn, and the code inside <code>{}</code> runs once per value.</p>
+<section id="step-1-loop-through-and-classify-every-patients-bp" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-loop-through-and-classify-every-patients-bp">Step 1: Loop through and classify every patient’s BP</h3>
+<p>Combine what you built in Activity 1 with a <code>for</code> loop: loop over all 12 patients, and print each patient’s <code>id</code> alongside their BP category. Don’t forget to handle <code>NA</code> (patient 7).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in 1:nrow(patients)) {</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ... your if/else chain from Activity 1, using patients$sbp[i] ...</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   ... print(paste(patients$id[i], "-", category)) ...</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-skip-missing-values-with-next" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-skip-missing-values-with-next">Step 2: Skip missing values with <code>next</code></h3>
+<p>Instead of printing “Missing” for patient 7, use <code>next</code> to skip that iteration entirely — the loop moves on to the next patient without printing anything for the skipped one.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy your loop from Step 1, but replace the "Missing" branch</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with: next</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-build-a-vector-of-results" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-build-a-vector-of-results">Step 3: Build a vector of results</h3>
+<p>Printing is fine for checking your work, but usually you want to <strong>save</strong> the result. Pre-allocate an empty character vector, then fill it in as the loop runs.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bp_category &lt;- vector("character", nrow(patients))</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in 1:nrow(patients)) {</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   ... same if/else logic as before ...</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   bp_category[i] &lt;- category   # or NA if missing</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># patients$bp_category &lt;- bp_category</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># patients</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 </section>
-<section id="tier-3-apply-steps_to_miles-with-purrrmap_dbl" class="level2">
-<h2 class="anchored" data-anchor-id="tier-3-apply-steps_to_miles-with-purrrmap_dbl">Tier 3: Apply <code>steps_to_miles()</code> with <code>purrr::map_dbl()</code></h2>
-<p>Use <code>purrr::map_dbl()</code> to apply <code>steps_to_miles()</code> to the vector of daily steps below, both on its own and as a new column in a data frame.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>daily_steps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4200</span>, <span class="dv">6100</span>, <span class="dv">8000</span>, <span class="dv">9800</span>, <span class="dv">11500</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dbl</span>(daily_steps, steps_to_miles)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">steps =</span> daily_steps) <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">miles =</span> purrr<span class="sc">::</span><span class="fu">map_dbl</span>(steps, steps_to_miles))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="stretch-goal-forwarding-digits-through-map_dbl" class="level3">
-<h3 class="anchored" data-anchor-id="stretch-goal-forwarding-digits-through-map_dbl">Stretch goal: forwarding <code>digits</code> through <code>map_dbl()</code></h3>
-<p>Any extra arguments added after the function name in <code>map_dbl()</code> get forwarded to that function for <strong>every</strong> element – the same forwarding idea as <code>...</code> from Chapter 25.</p>
-<p>Repeat the <code>map_dbl()</code> calls above, but this time pass <code>digits = 3</code> through to <code>steps_to_miles()</code> for every element.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map_dbl</span>(daily_steps, steps_to_miles, <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">steps =</span> daily_steps) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">miles =</span> purrr<span class="sc">::</span><span class="fu">map_dbl</span>(steps, steps_to_miles, <span class="at">digits =</span> <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-
 </section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li><strong><code>if</code>/<code>else</code></strong> makes a decision for a <em>single</em> value — it can’t take a vector.</li>
+<li><strong><code>switch()</code></strong> is a shortcut for matching one variable against a known list of codes, with an optional default.</li>
+<li><strong><code>for</code> loops</strong> repeat a block of code once per element — this is how you scale a one-value decision (<code>if</code>/<code>switch</code>) up to a whole dataset.</li>
+<li><strong><code>next</code></strong> skips the rest of the current iteration and moves on — handy for skipping missing or bad data inside a loop.</li>
+<li>Always ask: is this a single value (<code>if</code>/<code>switch</code>) or a whole vector/column at once (loop, or later: <code>ifelse()</code>/<code>purrr::map()</code>)?</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
