@@ -36,6 +36,7 @@
   {
     "listing": "/attendees/BrianHelsel/about.html",
     "items": [
+      "/attendees/BrianHelsel/code/control_flow.html",
       "/attendees/BrianHelsel/code/communication.html",
       "/attendees/BrianHelsel/code/program.html",
       "/attendees/BrianHelsel/code/import.html",
@@ -45,18 +46,29 @@
     ]
   },
   {
-    "listing": "/attendees/JulianneClina/about.html",
+    "listing": "/attendees/AinsleyVanderGiesen/about.html",
     "items": [
-      "/attendees/JulianneClina/code/control_flow.html",
-      "/attendees/JulianneClina/code/subsetting_solutions.html",
-      "/attendees/JulianneClina/code/subsetting.html",
-      "/attendees/JulianneClina/code/communication.html",
-      "/attendees/JulianneClina/code/program_template.html",
-      "/attendees/JulianneClina/code/program_solutions.html",
-      "/attendees/JulianneClina/code/data_import.html",
-      "/attendees/JulianneClina/code/ggplot2.html",
-      "/attendees/JulianneClina/code/template.html",
-      "/attendees/JulianneClina/code/whole-game.html"
+      "/attendees/AinsleyVanderGiesen/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/DominicJavonillo/about.html",
+    "items": [
+      "/attendees/DominicJavonillo/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/KellieCollins/about.html",
+    "items": [
+      "/attendees/KellieCollins/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/MorganBrucks/about.html",
+    "items": [
+      "/attendees/MorganBrucks/code/communication.html",
+      "/attendees/MorganBrucks/code/template.html",
+      "/attendees/MorganBrucks/code/whole-game.html"
     ]
   },
   {
@@ -158,29 +170,19 @@
     ]
   },
   {
-    "listing": "/attendees/MorganBrucks/about.html",
+    "listing": "/attendees/JulianneClina/about.html",
     "items": [
-      "/attendees/MorganBrucks/code/communication.html",
-      "/attendees/MorganBrucks/code/template.html",
-      "/attendees/MorganBrucks/code/whole-game.html"
-    ]
-  },
-  {
-    "listing": "/attendees/KellieCollins/about.html",
-    "items": [
-      "/attendees/KellieCollins/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/DominicJavonillo/about.html",
-    "items": [
-      "/attendees/DominicJavonillo/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/AinsleyVanderGiesen/about.html",
-    "items": [
-      "/attendees/AinsleyVanderGiesen/code/template.html"
+      "/attendees/JulianneClina/code/control_flow.html",
+      "/attendees/JulianneClina/code/control-_flow_solutions.html",
+      "/attendees/JulianneClina/code/subsetting_solutions.html",
+      "/attendees/JulianneClina/code/subsetting.html",
+      "/attendees/JulianneClina/code/communication.html",
+      "/attendees/JulianneClina/code/program_template.html",
+      "/attendees/JulianneClina/code/program_solutions.html",
+      "/attendees/JulianneClina/code/data_import.html",
+      "/attendees/JulianneClina/code/ggplot2.html",
+      "/attendees/JulianneClina/code/template.html",
+      "/attendees/JulianneClina/code/whole-game.html"
     ]
   }
 ]
