@@ -1,9 +1,7 @@
 ---
 title: "Brian Helsel"
 listing:
-  contents: 
-    code
-    !conditions_solutions.qmd
+  contents: code
   sort: "date desc"
   type: default
   categories: true

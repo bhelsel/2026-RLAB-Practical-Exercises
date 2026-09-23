@@ -54,7 +54,20 @@ For example: **Warning: 2 missing values were removed**.
 
 ```{r}
 
-# Function here...
+safe_mean <- function(x) {
+  n_missing <- sum(is.na(x))
+
+  if (n_missing > 0) {
+    warning(
+      n_missing,
+      " missing value",
+      if (n_missing != 1) "s",
+      " were removed."
+    )
+  }
+
+  mean(x, na.rm = TRUE)
+}
 
 safe_mean(c(1, 2, NA, 4, NA))
 ```
@@ -91,9 +104,17 @@ Test your function with:
 
 ```{r}
 
-# Function here...
+safe_ratio <- function(x, y) {
+  tryCatch(
+    x / y,
+    error = function(e) {
+      NA
+    }
+  )
+}
 
 safe_ratio(10, 2)
+
 safe_ratio("ten", 2)
 ```
 
@@ -103,7 +124,15 @@ For example: **Could not calculate ratio: non-numeric argument to binary operato
 
 ```{r}
 
-# Function here...
+safe_ratio <- function(x, y) {
+  tryCatch(
+    x / y,
+    error = function(e) {
+      message("Could not calculate ratio: ", e$message)
+      NA
+    }
+  )
+}
 ```
 
 ## Exercise 3: Creating and handling custom conditions
@@ -134,12 +163,57 @@ Then use tryCatch() to handle the "insufficient_data" condition and print:
 
 
 ```{r}
-# Function and code here...
+check_data <- function(x) {
+  n_valid <- sum(!is.na(x))
+
+  if (n_valid < 3) {
+    rlang::abort(
+      "Fewer than 3 valid observations.",
+      class = "insufficient_data"
+    )
+  }
+
+  n_valid
+}
+
+check_data(c(1, 2, 3, NA))
+
+
+tryCatch(
+  check_data(c(1, NA, NA)),
+  insufficient_data = function(cnd) {
+    message("Participant does not have enough valid observations.")
+  }
+)
 ```
 
 Modify the function so that the condition contains the number of valid observations. For example, if only 2 observations are available, the condition should contain: **n_valid = 2**
 
 ```{r}
 
-# Function and code here....
+check_data <- function(x) {
+  n_valid <- sum(!is.na(x))
+
+  if (n_valid < 3) {
+    rlang::abort(
+      "Fewer than 3 valid observations.",
+      class = "insufficient_data",
+      n_valid = n_valid
+    )
+  }
+
+  n_valid
+}
+
+
+tryCatch(
+  check_data(c(1, 2, NA)),
+  insufficient_data = function(cnd) {
+    message(
+      "Only ",
+      cnd$n_valid,
+      " valid observations were available."
+    )
+  }
+)
 ```
