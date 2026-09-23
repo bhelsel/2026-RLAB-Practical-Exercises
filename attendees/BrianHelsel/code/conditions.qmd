@@ -1,0 +1,148 @@
+---
+title: "Conditions"
+author: "Brian C. Helsel"
+institute: "University of Kansas Medical Center"
+date: 2026-09-23
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-block-bg: true
+    theme: cosmo
+execute:
+  echo: true
+  eval: false
+---
+
+# Conditions in R
+
+This practice focuses on working with **conditions** in R, including warnings, errors, messages, and custom condition handling.
+
+---
+
+## Exercise 1: Handling warnings
+
+### Goal
+
+Write a function that calculates the mean of a numeric vector but gives the user a warning when missing values are present.
+
+### Task
+
+Create a function called `safe_mean()` that:
+
+- Takes a numeric vector `x`.
+- Calculates the mean using `na.rm = TRUE`.
+- Issues a warning if `x` contains any missing values.
+- Returns the calculated mean.
+
+For example, **safe_mean(c(1, 2, NA, 4))** should return **2.333333** and
+generate a warning indicating that missing values were removed.
+
+```{r}
+
+safe_mean <- function(x) {
+  if (anyNA(x)) {
+    warning("Missing values were removed.")
+  }
+  mean(x, na.rm = TRUE)
+}
+
+
+safe_mean(c(1, 2, NA, 4))
+```
+
+Modify safe_mean() so that the warning reports how many missing values were found.
+
+For example: **Warning: 2 missing values were removed**.
+
+```{r}
+
+# Function here...
+
+safe_mean(c(1, 2, NA, 4, NA))
+```
+
+
+## Exercise 2: Catching errors
+
+### Goal
+
+Use tryCatch() to make a function robust to errors.
+
+Suppose you have a function that calculates a ratio:
+
+```{r}
+calculate_ratio <- function(x, y) {
+  x / y
+}
+```
+
+You want to safely calculate several ratios without allowing one problematic calculation to stop the entire analysis.
+
+### Task
+
+Create a function called safe_ratio() that:
+
+- Takes x and y.
+- Attempts to calculate x / y.
+- Returns the result if the calculation succeeds.
+- Returns NA if an error occurs.
+
+Use tryCatch() to handle the error.
+
+Test your function with:
+
+```{r}
+
+# Function here...
+
+safe_ratio(10, 2)
+safe_ratio("ten", 2)
+```
+
+Modify the function so that it also prints a useful message when an error occurs.
+
+For example: **Could not calculate ratio: non-numeric argument to binary operator**
+
+```{r}
+
+# Function here...
+```
+
+## Exercise 3: Creating and handling custom conditions
+
+### Goal
+
+Create your own condition and use it to communicate information from a function to its caller.
+
+Imagine that you are processing participant data. A function checks whether a participant has enough valid observations for analysis.
+
+If fewer than 3 observations are available, you want to generate a custom condition called "insufficient_data".
+
+### Task
+
+Create a function called check_data() that:
+
+- Takes a numeric vector x.
+- Counts the number of non-missing observations.
+- If there are fewer than 3 observations, signals a custom condition with class "insufficient_data".
+- Otherwise, returns the number of valid observations.
+
+For example: **check_data(c(1, 2, 3, NA))** should return **[1] 3** while
+**check_data(c(1, NA, NA))** should generate the custom condition.
+
+Then use tryCatch() to handle the "insufficient_data" condition and print:
+
+**Participant does not have enough valid observations.**
+
+
+```{r}
+# Function and code here...
+```
+
+Modify the function so that the condition contains the number of valid observations. For example, if only 2 observations are available, the condition should contain: **n_valid = 2**
+
+```{r}
+
+# Function and code here....
+```
