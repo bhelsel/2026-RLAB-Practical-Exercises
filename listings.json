@@ -90,6 +90,7 @@
   {
     "listing": "/attendees/BrianHelsel/about.html",
     "items": [
+      "/attendees/BrianHelsel/code/functional-programming.html",
       "/attendees/BrianHelsel/code/conditions.html",
       "/attendees/BrianHelsel/code/control_flow.html",
       "/attendees/BrianHelsel/code/communication.html",
@@ -101,35 +102,19 @@
     ]
   },
   {
-    "listing": "/attendees/IanWeidling/about.html",
+    "listing": "/attendees/DavidTitus/about.html",
     "items": [
-      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
-      "/attendees/IanWeidling/code/template.html"
+      "/attendees/DavidTitus/code/Week_3_visualization_activities.html",
+      "/attendees/DavidTitus/code/week_2_exercise.html",
+      "/attendees/DavidTitus/code/Week_2_excersise.html",
+      "/attendees/DavidTitus/code/template.html",
+      "/attendees/DavidTitus/code/week_1_exercise.html"
     ]
   },
   {
-    "listing": "/attendees/JackieAdedokun/about.html",
+    "listing": "/attendees/SullafaKadura/about.html",
     "items": [
-      "/attendees/JackieAdedokun/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/ElhamGhanbarian/about.html",
-    "items": [
-      "/attendees/ElhamGhanbarian/code/template.html"
-    ]
-  },
-  {
-    "listing": "/attendees/MasonMcClarnon/about.html",
-    "items": [
-      "/attendees/MasonMcClarnon/code/template.html",
-      "/attendees/MasonMcClarnon/code/whole-game.html"
-    ]
-  },
-  {
-    "listing": "/attendees/RachelHantman/about.html",
-    "items": [
-      "/attendees/RachelHantman/code/template.html"
+      "/attendees/SullafaKadura/code/template.html"
     ]
   },
   {
@@ -141,19 +126,35 @@
     ]
   },
   {
-    "listing": "/attendees/SullafaKadura/about.html",
+    "listing": "/attendees/RachelHantman/about.html",
     "items": [
-      "/attendees/SullafaKadura/code/template.html"
+      "/attendees/RachelHantman/code/template.html"
     ]
   },
   {
-    "listing": "/attendees/DavidTitus/about.html",
+    "listing": "/attendees/MasonMcClarnon/about.html",
     "items": [
-      "/attendees/DavidTitus/code/Week_3_visualization_activities.html",
-      "/attendees/DavidTitus/code/week_2_exercise.html",
-      "/attendees/DavidTitus/code/Week_2_excersise.html",
-      "/attendees/DavidTitus/code/template.html",
-      "/attendees/DavidTitus/code/week_1_exercise.html"
+      "/attendees/MasonMcClarnon/code/template.html",
+      "/attendees/MasonMcClarnon/code/whole-game.html"
+    ]
+  },
+  {
+    "listing": "/attendees/ElhamGhanbarian/about.html",
+    "items": [
+      "/attendees/ElhamGhanbarian/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/JackieAdedokun/about.html",
+    "items": [
+      "/attendees/JackieAdedokun/code/template.html"
+    ]
+  },
+  {
+    "listing": "/attendees/IanWeidling/about.html",
+    "items": [
+      "/attendees/IanWeidling/code/data-import-practical-exercise.html",
+      "/attendees/IanWeidling/code/template.html"
     ]
   },
   {
