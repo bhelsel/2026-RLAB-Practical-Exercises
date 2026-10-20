@@ -23,21 +23,17 @@ row per predictor.
 ```{r}
 
 predictors <- c("disp", "hp", "wt", "qsec")
-# Fit one model for each predictor
 
 models <- purrr::map(predictors, \(x) {
   lm(reformulate(x, response = "mpg"), data = mtcars)
 })
 
-# Extract the slope, p-value, and R²
-results <- purrr::map_dfr(models, \(model) {
+purrr::map_dfr(models, \(model) {
   broom::tidy(model) |>
     dplyr::filter(term != "(Intercept)") |>
     dplyr::select(term, estimate, p.value) |>
     dplyr::mutate(r_squared = broom::glance(model)$r.squared)
 })
-
-results
 ```
 
 **Function Factories: Create a Model Factory**. Create a function called
@@ -51,17 +47,14 @@ summary of the model rather than the entire model object.
 
 make_modeler <- function(data, outcome) {
   function(predictor) {
-    model <- lm(
-      reformulate(predictor, response = outcome),
-      data = data
-    )
-    tidymodel <- broom::tidy(model)
-    return(tidymodel[tidymodel$term != "(Intercept)", ])
+    model <- lm(reformulate(predictor, response = outcome), data = data)
+    tidymodel <- broom::tidy(model) |>
+      dplyr::filter(term != "(Intercept)")
+    return(tidymodel)
   }
 }
 
-
 model_mpg <- make_modeler(mtcars, "mpg")
 
-purrr::map_dfr(c("wt", "hp", "disp"), model_mpg)
+purrr::map_dfr(predictors, model_mpg)
 ```
