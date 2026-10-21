@@ -1,0 +1,167 @@
+---
+title: "Meta-Programming"
+subtitle: "Expressions and tidy evaluation"
+author: Brian Helsel
+date: 2026-10-21
+image: "https://github.com/bhelsel/2026-RLAB-Practical-Exercises/raw/main/images/rlab-placeholder.png"
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+---
+
+**Assignment**. Practice meta-programming using expressions, quosures, and tidy
+evaluation.
+
+**Description**: Make a function called `fmt_stat` that takes a numeric vector `x`
+and a template string such as `"{mean} ± {sd}"`. Each `{name}` in the template is
+treated as the name of a function, which is called on `x` (with missing values
+removed), rounded, and substituted back into the template.
+
+
+```{r}
+fmt_stat <- function(x, stat = "{mean} ± {sd}", digits = 2) {
+  x <- x[!is.na(x)]
+
+  tokens <- regmatches(stat, gregexpr("\\{[^}]+\\}", stat))[[1]]
+  fn_names <- gsub("[{}]", "", tokens)
+
+  values <- purrr::map_dbl(fn_names, \(name) {
+    expr <- rlang::call2(name, quote(x))
+    round(rlang::eval_tidy(expr, data = list(x = x)), digits)
+  })
+
+  purrr::reduce2(
+    tokens,
+    values,
+    \(result, token, value) sub(token, value, result, fixed = TRUE),
+    .init = stat
+  )
+}
+
+```
+
+```{r}
+fmt_stat(1:10, "{mean} ± {sd}")
+
+fmt_stat(1:10, "{median} [{min}, {max}], n = {length}")
+```
+
+---
+
+**Description**: Make a function called `print_linear_equation` that takes a model
+`formula` and a `data` frame, fits a linear model with `lm()`, and returns the
+fitted equation as an R expression, such as `39.69 + (-3.19 * wt) + (-1.51 * cyl)`.
+Coefficients are rounded to two decimal places. Build the expression from the
+model's coefficients and variable names rather than pasting together a string.
+
+```{r}
+print_linear_equation <- function(formula, data) {
+  b <- round(coef(lm(formula, data = data)), 2)
+  terms <- purrr::imap(b[-1], \(value, var) {
+    rlang::expr((!!value * !!rlang::sym(var)))
+  })
+
+  purrr::reduce(terms, \(acc, term) rlang::expr(!!acc + !!term), .init = b[[1]])
+}
+
+```
+
+```{r}
+print_linear_equation(mpg ~ wt + cyl, data = mtcars)
+
+print_linear_equation(mpg ~ wt + cyl + hp, data = mtcars)
+```
+
+---
+
+**Description**: Make a function called `get_database_values` that takes a
+`data` frame and any number of strings like `"MilesPerGallon|mpg"`. Each string
+lists alternative column names separated by `|`, and the first name is the
+preferred one. For each string, find the first alternative that exists in
+`data`, rename it to the preferred name, and return a data frame with just those
+columns. Strings with no matching column are skipped. The strings can be passed
+individually or from a character vector using `!!!`.
+
+```{r}
+get_database_values <- function(..., data) {
+  vars <- purrr::map_chr(rlang::ensyms(...), rlang::as_string)
+  specs <- strsplit(vars, "|", fixed = TRUE)
+
+  renamed <- purrr::reduce(
+    specs,
+    \(df, opts) {
+      existing <- intersect(opts, names(df))
+      if (length(existing) == 0) {
+        return(df)
+      }
+      dplyr::rename(df, !!opts[1] := !!rlang::sym(existing[1]))
+    },
+    .init = data
+  )
+
+  dplyr::select(renamed, dplyr::any_of(purrr::map_chr(specs, 1)))
+}
+
+```
+
+```{r}
+myvars <- c(
+  "MilesPerGallon|mpg",
+  "Cylinders|cyl",
+  "HorsePower|hp",
+  "Weight|wt",
+  "am",
+  "gear"
+)
+
+head(get_database_values(!!!myvars, data = mtcars))
+```
+
+---
+
+**Description**: Make a function called `check_equations` that takes a `data`
+frame, a character vector of `variables`, and a character vector of `formulas`
+such as `"a + b"`. Each formula describes how the matching variable should be
+calculated from other columns. Evaluate each formula using the columns of `data`,
+compare the result to the variable's actual values (allowing a tolerance of
+`1e-6`), and return a data frame of the rows that don't match, with columns for
+`id`, `variable`, `equation`, `actual`, and `expected`. Missing values are not
+counted as errors.
+
+```{r}
+scores <- data.frame(
+  id = 1:4,
+  a = c(1, 2, 3, 4),
+  b = c(10, 20, 30, 40),
+  total = c(11, 22, 32, 44), # row 3 is wrong
+  diff = c(9, 18, 27, 33) # row 4 is wrong
+)
+
+check_equations <- function(data, variables, formulas, tol = 1e-6) {
+  purrr::map2_dfr(variables, formulas, \(variable, formula) {
+    expected <- rlang::eval_tidy(rlang::parse_expr(formula), data = data)
+    actual <- data[[variable]]
+    bad <- which(abs(actual - expected) > tol)
+
+    data.frame(
+      id = data$id[bad],
+      variable = rep(variable, length(bad)),
+      equation = rep(formula, length(bad)),
+      actual = actual[bad],
+      expected = expected[bad]
+    )
+  })
+}
+```
+
+
+
+```{r}
+check_equations(
+  scores,
+  variables = c("total", "diff"),
+  formulas = c("a + b", "b - a")
+)
+```
