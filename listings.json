@@ -144,10 +144,12 @@
   {
     "listing": "/attendees/JulianneClina/about.html",
     "items": [
+      "/attendees/JulianneClina/code/oop.html",
+      "/attendees/JulianneClina/code/functional-programming.html",
       "/attendees/JulianneClina/code/control_flow.html",
       "/attendees/JulianneClina/code/subsetting.html",
+      "/attendees/JulianneClina/code/control_flow_solutions.html",
       "/attendees/JulianneClina/code/subsetting_solutions.html",
-      "/attendees/JulianneClina/code/control-_flow_solutions.html",
       "/attendees/JulianneClina/code/communication.html",
       "/attendees/JulianneClina/code/program_template.html",
       "/attendees/JulianneClina/code/program_solutions.html",
