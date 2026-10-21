@@ -153,22 +153,22 @@ penguins_database <- tbl(con, "penguins")
 
 glimpse(penguins_database)
 
-gentoo <- penguins_database %>%
-  filter(species == 'Gentoo') %>%
-  select(species, island, body_mass_g, sex) %>%
-  group_by(sex) %>%
-  summarise(mean_body_mass = mean(body_mass_g, na.rm = TRUE)) %>%
+gentoo <- penguins_database |>
+  filter(species == 'Gentoo') |>
+  select(species, island, body_mass_g, sex) |>
+  group_by(sex) |>
+  summarise(mean_body_mass = mean(body_mass_g, na.rm = TRUE)) |>
   collect()
 
 gentoo
 
 ## extra actiivty
-gentoo <- penguins_database %>%
-  filter(species == 'Gentoo') %>%
-  select(species, island, body_mass_g, sex) %>%
-  group_by(sex) %>%
-  summarise(mean_body_mass = mean(body_mass_g, na.rm = TRUE)) %>%
-  show_query() %>%
+gentoo <- penguins_database |>
+  filter(species == 'Gentoo') |>
+  select(species, island, body_mass_g, sex) |>
+  group_by(sex) |>
+  summarise(mean_body_mass = mean(body_mass_g, na.rm = TRUE)) |>
+  show_query() |>
   collect()
 ```
 
@@ -220,27 +220,27 @@ library(rvest)
 
 page <- read_html(url)
 
-html_tables <- page %>%
-  html_elements("table") %>%
+html_tables <- page |>
+  html_elements("table") |>
   html_table()
 
 length(html_tables)
 
 glimpse(html_tables[[1]])
 
-first_table <- html_tables[[1]] %>%
-  select(1:4) %>%
+first_table <- html_tables[[1]] |>
+  select(1:4) |>
   janitor::clean_names()
 
 glimpse(first_table)
 
 ## bonus activity
-first_table %>%
+first_table |>
   slice_head(n = 10)
 
-first_table %>%
-  mutate(population_1_july_2023 = parse_number(population_1_july_2023)) %>%
-  arrange(desc(population_1_july_2023)) %>%
+first_table |>
+  mutate(population_1_july_2023 = parse_number(population_1_july_2023)) |>
+  arrange(desc(population_1_july_2023)) |>
   slice_head(n = 10)
 ```
 

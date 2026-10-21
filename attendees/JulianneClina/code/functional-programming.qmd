@@ -30,9 +30,9 @@ models <- purrr::map(predictors, \(x) {
 models
 
 results <- purrr::map_dfr(models, \(model) {
-  broom::tidy(model) %>%
-    dplyr::filter(term != "(Intercept)") %>%
-    dplyr::select(term, estimate, p.value) %>%
+  broom::tidy(model) |>
+    dplyr::filter(term != "(Intercept)") |>
+    dplyr::select(term, estimate, p.value) |>
     dplyr::mutate(r_squared = broom::glance(model)$r.squared)
 })
 results
@@ -50,7 +50,7 @@ summary of the model rather than the entire model object.
 make_modeler <- function(data, outcome) {
   function(predictor) {
     model <- lm(reformulate(predictor, response = outcome), data = data)
-    tidymodel <- broom::tidy(model) %>%
+    tidymodel <- broom::tidy(model) |>
       dplyr::filter(term != "(Intercept)")
     return(tidymodel)
   }
