@@ -40,6 +40,11 @@ jobs:
             any::rvest
             any::janitor
             any::patchwork
+            any::Rcpp
+            any::bench
+            any::broom
+            any::future
+            any::furrr
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:

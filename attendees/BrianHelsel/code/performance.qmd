@@ -1,0 +1,124 @@
+---
+title: "Improving Code Performance"
+subtitle: "Increasing the Speed of Your Code"
+author: Brian Helsel
+date: 2026-10-28
+image: "https://github.com/bhelsel/2026-RLAB-Practical-Exercises/raw/main/images/rlab-placeholder.png"
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+---
+
+**Assignment**. Practice microbenchmarking your code to improve its performance
+by exploring preallocation, vectorization, hash tables, and writing code in C++.
+
+```{r define custom print for benchmark}
+print.bench_mark <- function(x, ...) {
+  out <- x[, c("expression", "median", "itr/sec", "mem_alloc")]
+  class(out) <- setdiff(class(out), "bench_mark")
+  print(out, ...)
+  invisible(x)
+}
+```
+
+**Vectorization vs. For Loop**: R is optimized for vectorized operations.
+Repeatedly executing an operation in an R-level loop often adds overhead.
+Practice this by squaring one million numbers in a for loop, preallocated for
+loop, and with vectorization.
+
+```{r}
+x <- seq_len(1e6)
+
+bench::mark(
+  vectorized = x^2,
+
+  preallocation = {
+    result <- numeric(length(x))
+    for (i in seq_along(x)) {
+      result[i] <- x[i]^2
+    }
+    result
+  },
+
+  for_loop = {
+    result <- numeric()
+    for (i in seq_along(x)) {
+      result[i] <- x[i]^2
+    }
+    result
+  },
+
+  check = TRUE,
+  time_unit = "us"
+)
+```
+
+**Counting for 10 Seconds**. How high can R count in 10 seconds? Write a while
+loop and a C++ loop that counts for 10 seconds to show off some speed.
+
+```{r while loop counting for 10 seconds}
+r_count_until_time <- function(seconds) {
+  seconds <- count <- 0
+  start <- Sys.time()
+  while (seconds < 10) {
+    count <- count + 1
+    end <- Sys.time()
+    seconds <- as.numeric(difftime(end, start))
+  }
+  return(count)
+}
+
+r_count_until_time(10)
+```
+
+
+```{r cpp loop counting for 10 seconds}
+Rcpp::cppFunction(
+  '
+    long long count_until_time(double seconds){
+        using namespace std::chrono;
+        long long count = 0;
+        auto start = steady_clock::now();
+        double elapsed = 0.0;
+
+        while (elapsed < seconds){
+            count++;
+            auto now = steady_clock::now();
+            elapsed = duration<double>(now - start).count();
+        }
+
+        return count;
+    }'
+)
+
+count_until_time(10)
+```
+
+**Parallel Processing**. Use parallel processing to speed up a linear regression
+that is fit to the mtcars dataset with a `Sys.sleep(1)` function to simulate an
+expensive operation.
+
+```{r}
+predictors <- setdiff(names(mtcars), "mpg")
+
+fit_model <- function(predictor) {
+  formula <- reformulate(predictor, response = "mpg")
+  Sys.sleep(1)
+  lm(formula, data = mtcars) |>
+    broom::tidy() |>
+    dplyr::filter(term != "(Intercept)") |>
+    dplyr::mutate(predictor = predictor, .before = 1)
+}
+
+future::plan(future::multisession, workers = future::availableCores() - 1)
+
+
+bench::mark(
+  sequential = purrr::map(predictors, fit_model),
+  parallel = furrr::future_map(predictors, fit_model),
+  check = TRUE,
+  time_unit = "s"
+)
+```
