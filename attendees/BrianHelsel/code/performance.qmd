@@ -12,7 +12,8 @@ execute:
 ---
 
 **Assignment**. Practice microbenchmarking your code to improve its performance
-by exploring preallocation, vectorization, hash tables, and writing code in C++.
+by exploring preallocation, vectorization, writing code in C++, and parallel
+processing.
 
 ```{r define custom print for benchmark}
 print.bench_mark <- function(x, ...) {
@@ -60,12 +61,12 @@ loop and a C++ loop that counts for 10 seconds to show off some speed.
 
 ```{r while loop counting for 10 seconds}
 r_count_until_time <- function(seconds) {
-  seconds <- count <- 0
+  elapsed <- count <- 0
   start <- Sys.time()
-  while (seconds < 10) {
+  while (elapsed < seconds) {
     count <- count + 1
     end <- Sys.time()
-    seconds <- as.numeric(difftime(end, start))
+    elapsed <- as.numeric(difftime(end, start))
   }
   return(count)
 }
@@ -109,8 +110,7 @@ fit_model <- function(predictor) {
   Sys.sleep(1)
   lm(formula, data = mtcars) |>
     broom::tidy() |>
-    dplyr::filter(term != "(Intercept)") |>
-    dplyr::mutate(predictor = predictor, .before = 1)
+    dplyr::filter(term != "(Intercept)")
 }
 
 future::plan(future::multisession, workers = future::availableCores() - 1)
