@@ -76,7 +76,7 @@ r_count_until_time(10)
 
 ```{r cpp loop counting for 10 seconds}
 Rcpp::cppFunction(
-  '
+    '
     long long count_until_time(double seconds){
         using namespace std::chrono;
         long long count = 0;
@@ -90,7 +90,8 @@ Rcpp::cppFunction(
         }
 
         return count;
-    }'
+    }',
+    includes = "#include <chrono>"
 )
 
 count_until_time(10)

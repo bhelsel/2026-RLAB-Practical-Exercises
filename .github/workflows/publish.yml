@@ -45,6 +45,12 @@ jobs:
             any::broom
             any::future
             any::furrr
+
+      - name: Check C++ toolchain
+        run: |
+          g++ --version
+          Rscript -e 'Rcpp::evalCpp("1 + 1")'
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
